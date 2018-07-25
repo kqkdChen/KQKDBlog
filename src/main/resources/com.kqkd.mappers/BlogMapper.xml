@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kqkd.dao.BlogDao">
+
+    <resultMap id="BlogBean" type="Blog">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="summary" property="summary" />
+        <result column="releaseDate" property="releaseDate" />
+        <result column="checkNumber"  property="checkNumber" />
+        <result column="commentNumber" property="commentNumber" />
+        <result column="keywords" property="keywords" />
+        <result column="content" property="content"/>
+    </resultMap>
+
+    <resultMap id="BlogAndBlogTypeBean" type="BlogType" extends="BlogBean">
+        <association property="blogType" javaType="BlogType" column="typeId" select="com.kqkq.dao.BlogTypeDao.getBlogById"/>
+    </resultMap>
+
+    <sql id="property">
+        id,title,summary,releaseDate,checkNum,commentNumber,keywords,content
+    </sql>
+
+    <select id="queryBlog" parameterType="Blog" resultMap="BlogAndBlogTypeBean">
+        SELECT <include refid="property"/> FROM t_blog
+        <where>
+            <if test="id != null and id != ''">id = #{id}</if>
+        </where>
+    </select>
+
+</mapper>
