@@ -1,13 +1,11 @@
 package com.kqkd.pojo;
 
-import java.util.List;
-
 public class BlogType {
-
     private Integer id;
-    private String typeName;
-    private String orderNo;
-    private List<Blog> blogList;
+
+    private String name;
+
+    private Integer sort;
 
     public Integer getId() {
         return id;
@@ -17,27 +15,19 @@ public class BlogType {
         this.id = id;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getName() {
+        return name;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getOrderNo() {
-        return orderNo;
+    public Integer getSort() {
+        return sort;
     }
 
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
-    }
-
-    public List<Blog> getBlogList() {
-        return blogList;
-    }
-
-    public void setBlogList(List<Blog> blogList) {
-        this.blogList = blogList;
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }

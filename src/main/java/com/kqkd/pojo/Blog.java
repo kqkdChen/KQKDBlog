@@ -3,16 +3,25 @@ package com.kqkd.pojo;
 import java.util.Date;
 
 public class Blog {
-
     private Integer id;
+
     private String title;
+
     private String summary;
+
+    private String img;
+
     private Date releaseDate;
-    private String checkNum;
-    private String commentNum;
-    private String content;
-    private BlogType blogType;
+
+    private Integer checkNum;
+
+    private Integer commentNum;
+
+    private Integer typeId;
+
     private String keywords;
+
+    private String content;
 
     public Integer getId() {
         return id;
@@ -27,7 +36,7 @@ public class Blog {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = title == null ? null : title.trim();
     }
 
     public String getSummary() {
@@ -35,7 +44,15 @@ public class Blog {
     }
 
     public void setSummary(String summary) {
-        this.summary = summary;
+        this.summary = summary == null ? null : summary.trim();
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img == null ? null : img.trim();
     }
 
     public Date getReleaseDate() {
@@ -46,36 +63,28 @@ public class Blog {
         this.releaseDate = releaseDate;
     }
 
-    public String getCheckNum() {
+    public Integer getCheckNum() {
         return checkNum;
     }
 
-    public void setCheckNum(String checkNum) {
+    public void setCheckNum(Integer checkNum) {
         this.checkNum = checkNum;
     }
 
-    public String getCommentNum() {
+    public Integer getCommentNum() {
         return commentNum;
     }
 
-    public void setCommentNum(String commentNum) {
+    public void setCommentNum(Integer commentNum) {
         this.commentNum = commentNum;
     }
 
-    public String getContent() {
-        return content;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public BlogType getBlogType() {
-        return blogType;
-    }
-
-    public void setBlogType(BlogType blogType) {
-        this.blogType = blogType;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     public String getKeywords() {
@@ -83,6 +92,14 @@ public class Blog {
     }
 
     public void setKeywords(String keywords) {
-        this.keywords = keywords;
+        this.keywords = keywords == null ? null : keywords.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }
