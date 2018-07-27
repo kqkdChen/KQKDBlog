@@ -27,14 +27,14 @@
 <![endif]-->
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/front/header.jsp"/>
+<jsp:include page="/WEB-INF/jsp/front/common/header.jsp"/>
 <article>
   <!--banner begin-->
   <div class="banner">
     <div id="banner" class="fader">
       <li class="slide" ><a href="/" target="_blank"><img src="${pageContext.request.contextPath }/static/images/1.jpg"><span class="imginfo">别让这些闹心的套路，毁了你的网页设计!</span></a></li>
       <li class="slide" ><a href="/" target="_blank"><img src="${pageContext.request.contextPath }/static/images/2.jpg"><span class="imginfo">网页中图片属性固定宽度，如何用js改变大小</span></a></li>
-      <li class="slide" ><a href="/" target="_blank"><img src="${pageContext.request.contextPath }/static/images/3.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
+      <li class="slide" ><a href="/" target="_blank"><img src="${pageContext.request.contextPath }/static/images/321541.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
       <div class="fader_controls">
         <div class="page prev" data-target="prev">&lsaquo;</div>
         <div class="page next" data-target="next">&rsaquo;</div>
@@ -70,7 +70,7 @@
       <li><i><a href="/jstt/bj/2015-01-09/740.html" target="_blank"><img src="${pageContext.request.contextPath }/static/images/p3.jpg"></a></i><span>【匆匆那些年】总结个人博客经历的这四年…</span></li>
     </ul>
   </div> --%>
-  
+
   <div class="blogtab" id="blogList">
     <ul id="blogtab">
       <li class="current">最新文章</li>
@@ -79,16 +79,16 @@
       <li><a href="list.html">网站建设</a></li>
       <li><a href="list.html">文字标签</a></li>
       <li><a href="list.html">文字广告</a></li>
-    </ul> 
-  	<c:forEach var="blog" items="${blogs }">
+    </ul>
+  	<c:forEach var="blog" items="${blogList }">
     <div class="blogs" id="blogs" >
-      <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blog/articles/${blog.id }" target="_blank">${blog.title }</a></h3>
-      <span class="blogpic"><a href="${pageContext.request.contextPath}/blog/articles/${blog.id }" title=""><img src="${pageContext.request.contextPath}/${blog.img}"></a></span>
+      <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blog/info/${blog.id }" target="_blank">${blog.title }</a></h3>
+      <span class="blogpic"><a href="${pageContext.request.contextPath}/blog/info/${blog.id }" title=""><img src="${pageContext.request.contextPath}/${blog.img}"></a></span>
       <p class="blogtext">${blog.summary }</p>
       <div class="bloginfo">
         <ul>
           <li class="author"><a href="/">杨青</a></li>
-          <li class="lmname"><a href="/">${blog.blogType.name }</a></li>
+          <li class="lmname"><a href="${pageContext.request.contextPath}/blog/cate/${blog.blogType.id}">${blog.blogType.name }</a></li>
           <li class="timer"><fmt:formatDate value="${blog.releaseDate }" type="date" pattern="yyyy-MM-dd HH:mm"/></li>
           <li class="view"><span>${blog.checkNum }</span>已阅读</li>
           <li class="like">9999</li>
@@ -98,9 +98,9 @@
     </c:forEach>
   </div>
   </main>
-  <jsp:include page="/WEB-INF/jsp/front/aside.jsp"/>
+  <jsp:include page="/WEB-INF/jsp/front/common/aside.jsp"/>
 </article>
-<jsp:include page="/WEB-INF/jsp/front/footer.jsp"/>
+<jsp:include page="/WEB-INF/jsp/front/common/footer.jsp"/>
 <input type="hidden" id="PageContext" value="${pageContext.request.contextPath }"/>
 <script src="${pageContext.request.contextPath }/static/layui/layui.js"></script>
 <script type="text/javascript">

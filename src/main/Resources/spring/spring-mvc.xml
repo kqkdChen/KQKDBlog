@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>    
 <beans xmlns="http://www.springframework.org/schema/beans"    
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
-    xmlns:p="http://www.springframework.org/schema/p"  
-    xmlns:aop="http://www.springframework.org/schema/aop"   
-    xmlns:context="http://www.springframework.org/schema/context"  
-    xmlns:jee="http://www.springframework.org/schema/jee"  
-    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:context="http://www.springframework.org/schema/context"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xsi:schemaLocation="    
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
-        http://www.springframework.org/schema/mvc   http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
-        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">    
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/mvc   http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	
-	<!-- 本行将使Controller注解有效 -->
-	<mvc:annotation-driven/>
-	
+
 	<!-- 只扫描控制层包 -->
 	<context:component-scan base-package="com.kqkd.controller" />
-	
+
+	<!-- 本行将使Controller注解有效 -->
+	<mvc:annotation-driven>
+		<!-- 编码转换 -->
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/plain;charset=UTF-8</value>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
 	<!-- 过滤静态资源 -->
 	<mvc:resources mapping="/static/**" location="/static/"/>
 
@@ -41,11 +47,13 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
-	<!-- 文件上传bean -->
+
+	<!-- 文件上传解析器 -->
 	<bean id="multipartResolver"
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding" value="UTF-8"/>  
-	    <property name="maxUploadSize" value="10000000"/>
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"/>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+	    <property name="maxUploadSize" value="5242880"/>
 	</bean>
 </beans>  

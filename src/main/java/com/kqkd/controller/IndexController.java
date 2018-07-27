@@ -27,8 +27,8 @@ public class IndexController {
         PageHelper.offsetPage(0, 10);
         BlogExample blogExample = new BlogExample();
         blogExample.setOrderByClause("release_date DESC");
-        List<Blog> blogs = blogService.selectByExampleWithBLOBs(blogExample);
-        for(Blog b:blogs){
+        List<Blog> blogList = blogService.selectByExampleWithBLOBs(blogExample);
+        for(Blog b:blogList){
             String content = b.getContent();
             Document doc = Jsoup.parse(content);
             Elements elements = doc.select("img[src$=.jpg]");
@@ -40,7 +40,7 @@ public class IndexController {
             }
 
         }
-        mav.addObject("blogs", blogs);
+        mav.addObject("blogList", blogList);
         mav.setViewName("mainTemp");
         return mav;
     }
