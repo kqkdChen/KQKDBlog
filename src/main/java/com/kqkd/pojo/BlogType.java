@@ -7,6 +7,17 @@ public class BlogType {
 
     private Integer sort;
 
+    /**非博客实体属性*/
+    private Integer total;
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
     public Integer getId() {
         return id;
     }

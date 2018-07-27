@@ -22,6 +22,11 @@ public class BlogTypeServiceImpl implements BlogTypeService {
 	}
 
 	@Override
+	public List<BlogType> countList() {
+		return blogTypeMapper.countList();
+	}
+
+	@Override
 	public int insert(BlogType record) {
 		return blogTypeMapper.insert(record);
 	}

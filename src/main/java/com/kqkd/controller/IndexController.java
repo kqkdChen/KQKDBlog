@@ -26,7 +26,7 @@ public class IndexController {
         ModelAndView mav = new ModelAndView();
         PageHelper.offsetPage(0, 10);
         BlogExample blogExample = new BlogExample();
-        blogExample.setOrderByClause("releaseDate");
+        blogExample.setOrderByClause("release_date DESC");
         List<Blog> blogs = blogService.selectByExampleWithBLOBs(blogExample);
         for(Blog b:blogs){
             String content = b.getContent();
@@ -40,7 +40,6 @@ public class IndexController {
             }
 
         }
-        mav.addObject("pageTitle", "可圈可丶个人博客");
         mav.addObject("blogs", blogs);
         mav.setViewName("mainTemp");
         return mav;

@@ -3,12 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--懒加载 -->
-    <settings>
-         <setting name="lazyLoadingEnabled" value="true" />
-         <setting name="aggressiveLazyLoading" value="false"/>
-         <setting name="lazyLoadTriggerMethods"  value=""/>
-    </settings>
 	<!-- 别名 -->
 	<typeAliases>
 		<package name="com.kqkd.pojo"/>

@@ -23,6 +23,16 @@ public class Blog {
 
     private String content;
 
+    private BlogType blogType;
+
+    public BlogType getBlogType() {
+        return blogType;
+    }
+
+    public void setBlogType(BlogType blogType) {
+        this.blogType = blogType;
+    }
+
     public Integer getId() {
         return id;
     }

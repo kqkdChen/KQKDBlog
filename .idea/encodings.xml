@@ -2,6 +2,18 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogTypeMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BloggerMapper.java" charset="GBK" />

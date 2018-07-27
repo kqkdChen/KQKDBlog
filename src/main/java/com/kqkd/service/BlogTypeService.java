@@ -12,6 +12,8 @@ public interface BlogTypeService {
 
     int insertSelective(BlogType record);
 
+    List<BlogType> countList();
+
     List<BlogType> selectByExample(BlogTypeExample example);
 
     BlogType selectByPrimaryKey(Integer id);

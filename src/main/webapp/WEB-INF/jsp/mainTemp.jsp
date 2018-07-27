@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="gbk">
-<title>${pageTitle }</title>
+<meta charset="UTF-8">
+<title>可圈可点个人博客</title>
 <meta name="keywords" content="可圈可点个人博客" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="${pageContext.request.contextPath }/static/js/scrollreveal.min.js"></script>
@@ -83,12 +83,12 @@
   	<c:forEach var="blog" items="${blogs }">
     <div class="blogs" id="blogs" >
       <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blog/articles/${blog.id }" target="_blank">${blog.title }</a></h3>
-      <span class="blogpic"><a href="${pageContext.request.contextPath}/blog/articles/${blog.id }" title=""><img src="${pageContext.request.contextPath}/${blog.imgSrc}"></a></span>
+      <span class="blogpic"><a href="${pageContext.request.contextPath}/blog/articles/${blog.id }" title=""><img src="${pageContext.request.contextPath}/${blog.img}"></a></span>
       <p class="blogtext">${blog.summary }</p>
       <div class="bloginfo">
         <ul>
           <li class="author"><a href="/">杨青</a></li>
-          <li class="lmname"><a href="/">${blog.blogType.typeName }</a></li>
+          <li class="lmname"><a href="/">${blog.blogType.name }</a></li>
           <li class="timer"><fmt:formatDate value="${blog.releaseDate }" type="date" pattern="yyyy-MM-dd HH:mm"/></li>
           <li class="view"><span>${blog.checkNum }</span>已阅读</li>
           <li class="like">9999</li>
@@ -97,80 +97,8 @@
     </div>
     </c:forEach>
   </div>
-    <div id="page" style="margin:0 auto;"></div>
   </main>
-  <aside class="r_box" >
-      <div class="about_me">
-        <h2>博主简介</h2>
-        <ul>
-          <i><img src="${pageContext.request.contextPath }/static/images/4.jpg"></i>
-          <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
-        </ul>
-      </div>
-      <%-- <div class="wdxc">
-        <h2>图片精选</h2>
-        <ul>
-          <li><a href="/"><img src="${pageContext.request.contextPath }/static/images/7.jpg"></a></li>
-          <li><a href="/"><img src="${pageContext.request.contextPath }/static/images/8.jpg"></a></li>
-          <li><a href="/"><img src="${pageContext.request.contextPath }/static/images/9.jpg"></a></li>
-          <li><a href="/"><img src="${pageContext.request.contextPath }/static/images/10.jpg"></a></li>
-          <li><a href="/"><img src="${pageContext.request.contextPath }/static/images/11.jpg"></a></li>
-          <li><a href="/"><img src="${pageContext.request.contextPath }/static/images/12.jpg"></a></li>
-        </ul>
-      </div> --%>
-      <div class="fenlei">
-        <h2>文章分类</h2>
-        <ul>
-          <li><a href="/">学无止境（33）</a></li>
-          <li><a href="/">日记（19）</a></li>
-          <li><a href="/">慢生活（520）</a></li>
-          <li><a href="/">美文欣赏（40）</a></li>
-        </ul>
-      </div>
-      <div class="tuijian">
-        <h2 id="tab"><a href="#"class="current">活动公告</a><a href="#">点击排行</a><a href="#">站长推荐</a></h2>
-        
-     <div id="content">
-        <ul style="display:block;">
-          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-          <li><a href="/">【活动作品】柠檬绿兔小白个人博客模板</a></li>
-          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-          <li><a href="/">2014年度优秀个人博客评选活动</a></li>
-          <li><a href="/">你是什么人便会遇上什么人</a></li>
-          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-          <li><a href="/">个人博客模板《绅士》后台管理</a></li>
-        </ul>
-                <ul>
-          <li><a href="/">你是什么人便会遇上什么人</a></li>
-          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-          <li><a href="/">个人博客模板《绅士》后台管理</a></li>
-          <li><a href="/">你是什么人便会遇上什么人</a></li>
-          <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
-          <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
-          <li><a href="/">黑色质感时间轴html5个人博客模板</a></li>
-        </ul>
-        <ul>
-          <li><a href="/">个人博客，我为什么要用帝国cms？</a></li>
-          <li><a href="/">D设计师博客-一个热爱生活的设计师</a></li>
-          <li><a href="/">东轩博客，我看到了你的坚持！</a></li>
-          <li><a href="/">程序员创业，就得“豁得出去”！</a></li>
-          <li><a href="/">张建华 一个90后年轻站长！我们是对手亦是朋友！</a></li>
-          <li><a href="/">《奋斗电商》看知名微商如何做博客引流？</a></li>
-          <li><a href="/">《寻之旅》一个关于旅游，游记的个人博客</a></li>
-          <li><a href="/">【匆匆那些年】总结个人博客经历的这四年</a></li>
-        </ul>
-       </div>
-      </div>
-      <div class="guanzhu">
-        <h2>关注我 么么哒</h2>
-        <ul>
-          <li><img src="${pageContext.request.contextPath }/static/images/wx.jpg"></li>
-        </ul>
-      </div>
-
-  </aside>
+  <jsp:include page="/WEB-INF/jsp/front/aside.jsp"/>
 </article>
 <jsp:include page="/WEB-INF/jsp/front/footer.jsp"/>
 <input type="hidden" id="PageContext" value="${pageContext.request.contextPath }"/>
