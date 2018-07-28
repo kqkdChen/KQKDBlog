@@ -165,76 +165,6 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIpIsNull() {
-            addCriterion("user_ip is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpIsNotNull() {
-            addCriterion("user_ip is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpEqualTo(String value) {
-            addCriterion("user_ip =", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotEqualTo(String value) {
-            addCriterion("user_ip <>", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpGreaterThan(String value) {
-            addCriterion("user_ip >", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpGreaterThanOrEqualTo(String value) {
-            addCriterion("user_ip >=", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpLessThan(String value) {
-            addCriterion("user_ip <", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpLessThanOrEqualTo(String value) {
-            addCriterion("user_ip <=", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpLike(String value) {
-            addCriterion("user_ip like", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotLike(String value) {
-            addCriterion("user_ip not like", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpIn(List<String> values) {
-            addCriterion("user_ip in", values, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotIn(List<String> values) {
-            addCriterion("user_ip not in", values, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpBetween(String value1, String value2) {
-            addCriterion("user_ip between", value1, value2, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotBetween(String value1, String value2) {
-            addCriterion("user_ip not between", value1, value2, "userIp");
-            return (Criteria) this;
-        }
-
         public Criteria andBlogIdIsNull() {
             addCriterion("blog_id is null");
             return (Criteria) this;
@@ -292,6 +222,66 @@ public class CommentExample {
 
         public Criteria andBlogIdNotBetween(Integer value1, Integer value2) {
             addCriterion("blog_id not between", value1, value2, "blogId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdIsNull() {
+            addCriterion("blogger_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdIsNotNull() {
+            addCriterion("blogger_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdEqualTo(Integer value) {
+            addCriterion("blogger_id =", value, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdNotEqualTo(Integer value) {
+            addCriterion("blogger_id <>", value, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdGreaterThan(Integer value) {
+            addCriterion("blogger_id >", value, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("blogger_id >=", value, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdLessThan(Integer value) {
+            addCriterion("blogger_id <", value, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdLessThanOrEqualTo(Integer value) {
+            addCriterion("blogger_id <=", value, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdIn(List<Integer> values) {
+            addCriterion("blogger_id in", values, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdNotIn(List<Integer> values) {
+            addCriterion("blogger_id not in", values, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdBetween(Integer value1, Integer value2) {
+            addCriterion("blogger_id between", value1, value2, "bloggerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBloggerIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("blogger_id not between", value1, value2, "bloggerId");
             return (Criteria) this;
         }
 
@@ -422,6 +412,66 @@ public class CommentExample {
 
         public Criteria andCommentDateNotBetween(Date value1, Date value2) {
             addCriterion("comment_date not between", value1, value2, "commentDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumIsNull() {
+            addCriterion("like_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumIsNotNull() {
+            addCriterion("like_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumEqualTo(Integer value) {
+            addCriterion("like_num =", value, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumNotEqualTo(Integer value) {
+            addCriterion("like_num <>", value, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumGreaterThan(Integer value) {
+            addCriterion("like_num >", value, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("like_num >=", value, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumLessThan(Integer value) {
+            addCriterion("like_num <", value, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumLessThanOrEqualTo(Integer value) {
+            addCriterion("like_num <=", value, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumIn(List<Integer> values) {
+            addCriterion("like_num in", values, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumNotIn(List<Integer> values) {
+            addCriterion("like_num not in", values, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumBetween(Integer value1, Integer value2) {
+            addCriterion("like_num between", value1, value2, "likeNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("like_num not between", value1, value2, "likeNum");
             return (Criteria) this;
         }
 

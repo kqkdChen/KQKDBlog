@@ -5,21 +5,29 @@ import java.util.Date;
 public class Blog {
     private Integer id;
 
+    private Integer bloggerId;
+
+    private Integer typeId;
+
+    private Date releaseDate;
+
     private String title;
 
     private String summary;
 
-    private String img;
-
-    private Date releaseDate;
+    private String cover;
 
     private Integer checkNum;
 
     private Integer commentNum;
 
-    private Integer typeId;
+    private Integer likeNum;
 
     private String keywords;
+
+    private Integer top;
+
+    private Integer blogIs;
 
     private String content;
 
@@ -41,6 +49,30 @@ public class Blog {
         this.id = id;
     }
 
+    public Integer getBloggerId() {
+        return bloggerId;
+    }
+
+    public void setBloggerId(Integer bloggerId) {
+        this.bloggerId = bloggerId;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -57,20 +89,12 @@ public class Blog {
         this.summary = summary == null ? null : summary.trim();
     }
 
-    public String getImg() {
-        return img;
+    public String getCover() {
+        return cover;
     }
 
-    public void setImg(String img) {
-        this.img = img == null ? null : img.trim();
-    }
-
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setCover(String cover) {
+        this.cover = cover == null ? null : cover.trim();
     }
 
     public Integer getCheckNum() {
@@ -89,12 +113,12 @@ public class Blog {
         this.commentNum = commentNum;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Integer getLikeNum() {
+        return likeNum;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setLikeNum(Integer likeNum) {
+        this.likeNum = likeNum;
     }
 
     public String getKeywords() {
@@ -103,6 +127,22 @@ public class Blog {
 
     public void setKeywords(String keywords) {
         this.keywords = keywords == null ? null : keywords.trim();
+    }
+
+    public Integer getTop() {
+        return top;
+    }
+
+    public void setTop(Integer top) {
+        this.top = top;
+    }
+
+    public Integer getBlogIs() {
+        return blogIs;
+    }
+
+    public void setBlogIs(Integer blogIs) {
+        this.blogIs = blogIs;
     }
 
     public String getContent() {

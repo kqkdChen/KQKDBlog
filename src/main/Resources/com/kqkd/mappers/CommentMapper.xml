@@ -3,10 +3,11 @@
 <mapper namespace="com.kqkd.dao.CommentMapper">
   <resultMap id="BaseResultMap" type="com.kqkd.pojo.Comment">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_ip" jdbcType="VARCHAR" property="userIp" />
     <result column="blog_id" jdbcType="INTEGER" property="blogId" />
+    <result column="blogger_id" jdbcType="INTEGER" property="bloggerId" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="comment_date" jdbcType="TIMESTAMP" property="commentDate" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
     <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -39,7 +40,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_ip, blog_id, content, comment_date, state
+    id, blog_id, blogger_id, content, comment_date, like_num, state
   </sql>
   <select id="selectByExample" parameterType="com.kqkd.pojo.CommentExample" resultMap="BaseResultMap">
     select
@@ -67,19 +68,21 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Comment" useGeneratedKeys="true">
-    insert into t_comment (user_ip, blog_id, content, 
-      comment_date, state)
-    values (#{userIp,jdbcType=VARCHAR}, #{blogId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{commentDate,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
+    insert into t_comment (blog_id, blogger_id, content, 
+      comment_date, like_num, state
+      )
+    values (#{blogId,jdbcType=INTEGER}, #{bloggerId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{commentDate,jdbcType=TIMESTAMP}, #{likeNum,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Comment" useGeneratedKeys="true">
     insert into t_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userIp != null">
-        user_ip,
-      </if>
       <if test="blogId != null">
         blog_id,
+      </if>
+      <if test="bloggerId != null">
+        blogger_id,
       </if>
       <if test="content != null">
         content,
@@ -87,22 +90,28 @@
       <if test="commentDate != null">
         comment_date,
       </if>
+      <if test="likeNum != null">
+        like_num,
+      </if>
       <if test="state != null">
         state,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userIp != null">
-        #{userIp,jdbcType=VARCHAR},
-      </if>
       <if test="blogId != null">
         #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="bloggerId != null">
+        #{bloggerId,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
       </if>
       <if test="commentDate != null">
         #{commentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
@@ -112,17 +121,20 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.kqkd.pojo.Comment">
     update t_comment
     <set>
-      <if test="userIp != null">
-        user_ip = #{userIp,jdbcType=VARCHAR},
-      </if>
       <if test="blogId != null">
         blog_id = #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="bloggerId != null">
+        blogger_id = #{bloggerId,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
       <if test="commentDate != null">
         comment_date = #{commentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
       </if>
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
@@ -132,10 +144,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kqkd.pojo.Comment">
     update t_comment
-    set user_ip = #{userIp,jdbcType=VARCHAR},
-      blog_id = #{blogId,jdbcType=INTEGER},
+    set blog_id = #{blogId,jdbcType=INTEGER},
+      blogger_id = #{bloggerId,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       comment_date = #{commentDate,jdbcType=TIMESTAMP},
+      like_num = #{likeNum,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -6,22 +6,22 @@ import com.kqkd.pojo.BlogExample;
 import com.kqkd.pojo.BlogType;
 import com.kqkd.service.BlogService;
 import com.kqkd.service.BlogTypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
 
-    @Autowired
+    @Resource
     private BlogService blogService;
 
-    @Autowired
+    @Resource
     private BlogTypeService blogTypeService;
 
     /**
@@ -29,7 +29,7 @@ public class BlogController {
      * @param id
      * @return mav
      */
-    @RequestMapping("/info/{id}")
+    @RequestMapping("/articles/{id}")
     public ModelAndView info(@PathVariable("id") Integer id){
         ModelAndView mav = new ModelAndView();
         BlogExample blogExample = new BlogExample();
@@ -41,10 +41,13 @@ public class BlogController {
         criteria2.andIdGreaterThan(id);
         Blog blog = blogService.selectByPrimaryKey(id);
         blog.setCheckNum(blog.getCheckNum()+1);
-        blogService.updateByPrimaryKeySelective(blog); //更新查看次数
+        //更新查看次数
+        blogService.updateByPrimaryKeySelective(blog);
         PageHelper.offsetPage(0,1);
-        List<Blog> previous = blogService.selectByExample(blogExample); //上一篇
-        List<Blog> next = blogService.selectByExample(blogExample2);//下一篇
+        //上一篇
+        List<Blog> previous = blogService.selectByExample(blogExample);
+        //下一篇
+        List<Blog> next = blogService.selectByExample(blogExample2);
         if(previous.size() > 0){
             mav.addObject("previous",previous.get(0));
         }

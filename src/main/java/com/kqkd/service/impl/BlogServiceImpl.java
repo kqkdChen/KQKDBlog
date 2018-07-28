@@ -4,15 +4,15 @@ import com.kqkd.dao.BlogMapper;
 import com.kqkd.pojo.Blog;
 import com.kqkd.pojo.BlogExample;
 import com.kqkd.service.BlogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service("blogService")
 public class BlogServiceImpl implements BlogService {
 
-	@Autowired
+	@Resource
 	private BlogMapper blogMapper;
 
 	@Override

@@ -12,11 +12,11 @@ public interface BlogTypeMapper {
 
     int insertSelective(BlogType record);
 
-    List<BlogType> countList();
-
     List<BlogType> selectByExample(BlogTypeExample example);
 
     BlogType selectByPrimaryKey(Integer id);
+
+    List<BlogType> countList();
 
     int updateByPrimaryKeySelective(BlogType record);
 

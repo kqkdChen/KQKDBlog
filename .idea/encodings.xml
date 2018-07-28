@@ -3,31 +3,26 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogTypeMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BloggerMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/CommentMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/LinkMapper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blog.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blog.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogType.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogTypeExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blogger.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BloggerExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/CategoryExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Comment.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/CommentExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Link.java" charset="GBK" />

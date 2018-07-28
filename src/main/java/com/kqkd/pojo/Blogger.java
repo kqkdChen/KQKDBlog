@@ -3,17 +3,29 @@ package com.kqkd.pojo;
 public class Blogger {
     private Integer id;
 
-    private String account;
+    private String phoneNum;
+
+    private String email;
+
+    private String nickName;
 
     private String password;
+
+    private Integer sex;
 
     private String trueName;
 
     private String introduction;
 
-    private String headPortrait;
+    private String headImg;
 
-    private String basicInformation;
+    private String ip;
+
+    private Integer identifyLabel;
+
+    private Integer bloggerIs;
+
+    private String basicInfo;
 
     public Integer getId() {
         return id;
@@ -23,12 +35,28 @@ public class Blogger {
         this.id = id;
     }
 
-    public String getAccount() {
-        return account;
+    public String getPhoneNum() {
+        return phoneNum;
     }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum == null ? null : phoneNum.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
     public String getPassword() {
@@ -37,6 +65,14 @@ public class Blogger {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public String getTrueName() {
@@ -55,19 +91,43 @@ public class Blogger {
         this.introduction = introduction == null ? null : introduction.trim();
     }
 
-    public String getHeadPortrait() {
-        return headPortrait;
+    public String getHeadImg() {
+        return headImg;
     }
 
-    public void setHeadPortrait(String headPortrait) {
-        this.headPortrait = headPortrait == null ? null : headPortrait.trim();
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg == null ? null : headImg.trim();
     }
 
-    public String getBasicInformation() {
-        return basicInformation;
+    public String getIp() {
+        return ip;
     }
 
-    public void setBasicInformation(String basicInformation) {
-        this.basicInformation = basicInformation == null ? null : basicInformation.trim();
+    public void setIp(String ip) {
+        this.ip = ip == null ? null : ip.trim();
+    }
+
+    public Integer getIdentifyLabel() {
+        return identifyLabel;
+    }
+
+    public void setIdentifyLabel(Integer identifyLabel) {
+        this.identifyLabel = identifyLabel;
+    }
+
+    public Integer getBloggerIs() {
+        return bloggerIs;
+    }
+
+    public void setBloggerIs(Integer bloggerIs) {
+        this.bloggerIs = bloggerIs;
+    }
+
+    public String getBasicInfo() {
+        return basicInfo;
+    }
+
+    public void setBasicInfo(String basicInfo) {
+        this.basicInfo = basicInfo == null ? null : basicInfo.trim();
     }
 }

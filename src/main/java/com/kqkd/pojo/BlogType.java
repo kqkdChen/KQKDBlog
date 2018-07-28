@@ -7,14 +7,13 @@ public class BlogType {
 
     private Integer sort;
 
-    /**非博客实体属性*/
-    private Integer total;
+    private String total;
 
-    public Integer getTotal() {
+    public String getTotal() {
         return total;
     }
 
-    public void setTotal(Integer total) {
+    public void setTotal(String total) {
         this.total = total;
     }
 

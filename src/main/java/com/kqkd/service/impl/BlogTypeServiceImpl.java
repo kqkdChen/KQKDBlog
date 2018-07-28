@@ -4,15 +4,15 @@ import com.kqkd.dao.BlogTypeMapper;
 import com.kqkd.pojo.BlogType;
 import com.kqkd.pojo.BlogTypeExample;
 import com.kqkd.service.BlogTypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service("blogTypeService")
 public class BlogTypeServiceImpl implements BlogTypeService {
 
-	@Autowired
+	@Resource
 	private BlogTypeMapper blogTypeMapper;
 
 

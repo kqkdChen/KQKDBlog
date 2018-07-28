@@ -3,16 +3,20 @@
 <mapper namespace="com.kqkd.dao.BlogMapper">
   <resultMap id="BaseResultMap" type="com.kqkd.pojo.Blog">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="blogger_id" jdbcType="INTEGER" property="bloggerId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="release_date" jdbcType="TIMESTAMP" property="releaseDate" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="summary" jdbcType="VARCHAR" property="summary" />
-    <result column="img" jdbcType="VARCHAR" property="img" />
-    <result column="release_date" jdbcType="TIMESTAMP" property="releaseDate" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
     <result column="check_num" jdbcType="INTEGER" property="checkNum" />
     <result column="comment_num" jdbcType="INTEGER" property="commentNum" />
-    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="like_num" jdbcType="INTEGER" property="likeNum" />
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+    <result column="top" jdbcType="INTEGER" property="top" />
+    <result column="blog_is" jdbcType="INTEGER" property="blogIs" />
     <association property="blogType" javaType="BlogType" column="type_id"
-     select="com.kqkd.dao.BlogTypeMapper.selectByPrimaryKey"/>
+                 select="com.kqkd.dao.BlogTypeMapper.selectByPrimaryKey"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kqkd.pojo.Blog">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -47,7 +51,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, summary, img, release_date, check_num, comment_num, type_id, keywords
+    id, blogger_id, type_id, release_date, title, summary, cover, check_num, comment_num, 
+    like_num, keywords, top, blog_is
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -97,29 +102,37 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Blog" useGeneratedKeys="true">
-    insert into t_blog (title, summary, img, 
-      release_date, check_num, comment_num, 
-      type_id, keywords, content
-      )
-    values (#{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, 
-      #{releaseDate,jdbcType=TIMESTAMP}, #{checkNum,jdbcType=INTEGER}, #{commentNum,jdbcType=INTEGER}, 
-      #{typeId,jdbcType=INTEGER}, #{keywords,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
-      )
+    insert into t_blog (blogger_id, type_id, release_date, 
+      title, summary, cover, 
+      check_num, comment_num, like_num, 
+      keywords, top, blog_is, 
+      content)
+    values (#{bloggerId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{releaseDate,jdbcType=TIMESTAMP}, 
+      #{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}, 
+      #{checkNum,jdbcType=INTEGER}, #{commentNum,jdbcType=INTEGER}, #{likeNum,jdbcType=INTEGER}, 
+      #{keywords,jdbcType=VARCHAR}, #{top,jdbcType=INTEGER}, #{blogIs,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Blog" useGeneratedKeys="true">
     insert into t_blog
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bloggerId != null">
+        blogger_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="releaseDate != null">
+        release_date,
+      </if>
       <if test="title != null">
         title,
       </if>
       <if test="summary != null">
         summary,
       </if>
-      <if test="img != null">
-        img,
-      </if>
-      <if test="releaseDate != null">
-        release_date,
+      <if test="cover != null">
+        cover,
       </if>
       <if test="checkNum != null">
         check_num,
@@ -127,28 +140,40 @@
       <if test="commentNum != null">
         comment_num,
       </if>
-      <if test="typeId != null">
-        type_id,
+      <if test="likeNum != null">
+        like_num,
       </if>
       <if test="keywords != null">
         keywords,
+      </if>
+      <if test="top != null">
+        top,
+      </if>
+      <if test="blogIs != null">
+        blog_is,
       </if>
       <if test="content != null">
         content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bloggerId != null">
+        #{bloggerId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="releaseDate != null">
+        #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
       <if test="summary != null">
         #{summary,jdbcType=VARCHAR},
       </if>
-      <if test="img != null">
-        #{img,jdbcType=VARCHAR},
-      </if>
-      <if test="releaseDate != null">
-        #{releaseDate,jdbcType=TIMESTAMP},
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
       </if>
       <if test="checkNum != null">
         #{checkNum,jdbcType=INTEGER},
@@ -156,11 +181,17 @@
       <if test="commentNum != null">
         #{commentNum,jdbcType=INTEGER},
       </if>
-      <if test="typeId != null">
-        #{typeId,jdbcType=INTEGER},
+      <if test="likeNum != null">
+        #{likeNum,jdbcType=INTEGER},
       </if>
       <if test="keywords != null">
         #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="top != null">
+        #{top,jdbcType=INTEGER},
+      </if>
+      <if test="blogIs != null">
+        #{blogIs,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -170,17 +201,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.kqkd.pojo.Blog">
     update t_blog
     <set>
+      <if test="bloggerId != null">
+        blogger_id = #{bloggerId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="releaseDate != null">
+        release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      </if>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="summary != null">
         summary = #{summary,jdbcType=VARCHAR},
       </if>
-      <if test="img != null">
-        img = #{img,jdbcType=VARCHAR},
-      </if>
-      <if test="releaseDate != null">
-        release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
       </if>
       <if test="checkNum != null">
         check_num = #{checkNum,jdbcType=INTEGER},
@@ -188,11 +225,17 @@
       <if test="commentNum != null">
         comment_num = #{commentNum,jdbcType=INTEGER},
       </if>
-      <if test="typeId != null">
-        type_id = #{typeId,jdbcType=INTEGER},
+      <if test="likeNum != null">
+        like_num = #{likeNum,jdbcType=INTEGER},
       </if>
       <if test="keywords != null">
         keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="top != null">
+        top = #{top,jdbcType=INTEGER},
+      </if>
+      <if test="blogIs != null">
+        blog_is = #{blogIs,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
@@ -202,27 +245,35 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kqkd.pojo.Blog">
     update t_blog
-    set title = #{title,jdbcType=VARCHAR},
-      summary = #{summary,jdbcType=VARCHAR},
-      img = #{img,jdbcType=VARCHAR},
+    set blogger_id = #{bloggerId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
       release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      cover = #{cover,jdbcType=VARCHAR},
       check_num = #{checkNum,jdbcType=INTEGER},
       comment_num = #{commentNum,jdbcType=INTEGER},
-      type_id = #{typeId,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER},
       keywords = #{keywords,jdbcType=VARCHAR},
+      top = #{top,jdbcType=INTEGER},
+      blog_is = #{blogIs,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kqkd.pojo.Blog">
     update t_blog
-    set title = #{title,jdbcType=VARCHAR},
-      summary = #{summary,jdbcType=VARCHAR},
-      img = #{img,jdbcType=VARCHAR},
+    set blogger_id = #{bloggerId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
       release_date = #{releaseDate,jdbcType=TIMESTAMP},
+      title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      cover = #{cover,jdbcType=VARCHAR},
       check_num = #{checkNum,jdbcType=INTEGER},
       comment_num = #{commentNum,jdbcType=INTEGER},
-      type_id = #{typeId,jdbcType=INTEGER},
-      keywords = #{keywords,jdbcType=VARCHAR}
+      like_num = #{likeNum,jdbcType=INTEGER},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      top = #{top,jdbcType=INTEGER},
+      blog_is = #{blogIs,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

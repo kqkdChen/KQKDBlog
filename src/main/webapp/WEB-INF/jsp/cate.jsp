@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
     <c:forEach var="blog" items="${blogList }">
       <div class="blogs" id="blogs" >
         <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blog/info/${blog.id }" target="_blank">${blog.title }</a></h3>
-        <span class="blogpic"><a href="${pageContext.request.contextPath}/blog/info/${blog.id }" title=""><img src="${pageContext.request.contextPath}/${blog.img}"></a></span>
+        <span class="blogpic"><a href="${pageContext.request.contextPath}/blog/info/${blog.id }" title=""><img src="${pageContext.request.contextPath}/${blog.cover}"></a></span>
         <p class="blogtext">${blog.summary }</p>
         <div class="bloginfo">
           <ul>

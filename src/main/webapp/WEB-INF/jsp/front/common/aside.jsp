@@ -10,10 +10,10 @@
 <aside class="r_box" >
     <div class="fenlei">
         <h2>文章分类</h2>
-        <ul style="text-align: center;font-size: 15px;">
+        <ul style="text-align: center;font-size: 14px;">
             <c:forEach  var="blogType" items="${blogTypes}">
                 <li><a href="${pageContext.request.contextPath}/blog/cate/${blogType.id}">${blogType.name}（${blogType.total}篇）</a></li>
-                <hr class="layui-bg-gray" >
+                <hr>
             </c:forEach>
         </ul>
     </div>

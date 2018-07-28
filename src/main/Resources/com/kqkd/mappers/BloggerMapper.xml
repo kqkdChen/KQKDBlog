@@ -3,14 +3,20 @@
 <mapper namespace="com.kqkd.dao.BloggerMapper">
   <resultMap id="BaseResultMap" type="com.kqkd.pojo.Blogger">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="true_name" jdbcType="VARCHAR" property="trueName" />
     <result column="introduction" jdbcType="VARCHAR" property="introduction" />
-    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="head_img" jdbcType="VARCHAR" property="headImg" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="identify_label" jdbcType="INTEGER" property="identifyLabel" />
+    <result column="blogger_is" jdbcType="INTEGER" property="bloggerIs" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kqkd.pojo.Blogger">
-    <result column="basic_information" jdbcType="LONGVARCHAR" property="basicInformation" />
+    <result column="basic_info" jdbcType="LONGVARCHAR" property="basicInfo" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -42,10 +48,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, account, password, true_name, introduction, head_portrait
+    id, phone_num, email, nick_name, password, sex, true_name, introduction, head_img, 
+    ip, identify_label, blogger_is
   </sql>
   <sql id="Blob_Column_List">
-    basic_information
+    basic_info
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="com.kqkd.pojo.BloggerExample" resultMap="ResultMapWithBLOBs">
     select
@@ -92,21 +99,34 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Blogger" useGeneratedKeys="true">
-    insert into t_blogger (account, password, true_name, 
-      introduction, head_portrait, basic_information
+    insert into t_blogger (phone_num, email, nick_name, 
+      password, sex, true_name, 
+      introduction, head_img, ip, 
+      identify_label, blogger_is, basic_info
       )
-    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, 
-      #{introduction,jdbcType=VARCHAR}, #{headPortrait,jdbcType=VARCHAR}, #{basicInformation,jdbcType=LONGVARCHAR}
+    values (#{phoneNum,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{trueName,jdbcType=VARCHAR}, 
+      #{introduction,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{identifyLabel,jdbcType=INTEGER}, #{bloggerIs,jdbcType=INTEGER}, #{basicInfo,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Blogger" useGeneratedKeys="true">
     insert into t_blogger
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="account != null">
-        account,
+      <if test="phoneNum != null">
+        phone_num,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="nickName != null">
+        nick_name,
       </if>
       <if test="password != null">
         password,
+      </if>
+      <if test="sex != null">
+        sex,
       </if>
       <if test="trueName != null">
         true_name,
@@ -114,19 +134,37 @@
       <if test="introduction != null">
         introduction,
       </if>
-      <if test="headPortrait != null">
-        head_portrait,
+      <if test="headImg != null">
+        head_img,
       </if>
-      <if test="basicInformation != null">
-        basic_information,
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="identifyLabel != null">
+        identify_label,
+      </if>
+      <if test="bloggerIs != null">
+        blogger_is,
+      </if>
+      <if test="basicInfo != null">
+        basic_info,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="account != null">
-        #{account,jdbcType=VARCHAR},
+      <if test="phoneNum != null">
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
       </if>
       <if test="trueName != null">
         #{trueName,jdbcType=VARCHAR},
@@ -134,22 +172,40 @@
       <if test="introduction != null">
         #{introduction,jdbcType=VARCHAR},
       </if>
-      <if test="headPortrait != null">
-        #{headPortrait,jdbcType=VARCHAR},
+      <if test="headImg != null">
+        #{headImg,jdbcType=VARCHAR},
       </if>
-      <if test="basicInformation != null">
-        #{basicInformation,jdbcType=LONGVARCHAR},
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyLabel != null">
+        #{identifyLabel,jdbcType=INTEGER},
+      </if>
+      <if test="bloggerIs != null">
+        #{bloggerIs,jdbcType=INTEGER},
+      </if>
+      <if test="basicInfo != null">
+        #{basicInfo,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.kqkd.pojo.Blogger">
     update t_blogger
     <set>
-      <if test="account != null">
-        account = #{account,jdbcType=VARCHAR},
+      <if test="phoneNum != null">
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
       </if>
       <if test="trueName != null">
         true_name = #{trueName,jdbcType=VARCHAR},
@@ -157,32 +213,53 @@
       <if test="introduction != null">
         introduction = #{introduction,jdbcType=VARCHAR},
       </if>
-      <if test="headPortrait != null">
-        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      <if test="headImg != null">
+        head_img = #{headImg,jdbcType=VARCHAR},
       </if>
-      <if test="basicInformation != null">
-        basic_information = #{basicInformation,jdbcType=LONGVARCHAR},
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyLabel != null">
+        identify_label = #{identifyLabel,jdbcType=INTEGER},
+      </if>
+      <if test="bloggerIs != null">
+        blogger_is = #{bloggerIs,jdbcType=INTEGER},
+      </if>
+      <if test="basicInfo != null">
+        basic_info = #{basicInfo,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kqkd.pojo.Blogger">
     update t_blogger
-    set account = #{account,jdbcType=VARCHAR},
+    set phone_num = #{phoneNum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
       true_name = #{trueName,jdbcType=VARCHAR},
       introduction = #{introduction,jdbcType=VARCHAR},
-      head_portrait = #{headPortrait,jdbcType=VARCHAR},
-      basic_information = #{basicInformation,jdbcType=LONGVARCHAR}
+      head_img = #{headImg,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      identify_label = #{identifyLabel,jdbcType=INTEGER},
+      blogger_is = #{bloggerIs,jdbcType=INTEGER},
+      basic_info = #{basicInfo,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kqkd.pojo.Blogger">
     update t_blogger
-    set account = #{account,jdbcType=VARCHAR},
+    set phone_num = #{phoneNum,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
       true_name = #{trueName,jdbcType=VARCHAR},
       introduction = #{introduction,jdbcType=VARCHAR},
-      head_portrait = #{headPortrait,jdbcType=VARCHAR}
+      head_img = #{headImg,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      identify_label = #{identifyLabel,jdbcType=INTEGER},
+      blogger_is = #{bloggerIs,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
