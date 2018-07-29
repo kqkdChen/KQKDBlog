@@ -40,7 +40,7 @@ public class InitComponent implements ServletContextListener, ApplicationContext
         blogExample.setOrderByClause("like_num DESC");
         List<Blog> likeNumList = blogService.selectByExample(blogExample);
         application.setAttribute("likeNumList",likeNumList);
-        /*首页轮播*/
+        /*首页轮播,1标识置顶,按照点赞数量排序*/
         BlogExample.Criteria criteria = blogExample.createCriteria();
         criteria.andTopEqualTo(1);
         List<Blog> topList = blogService.selectByExample(blogExample);
@@ -50,7 +50,7 @@ public class InitComponent implements ServletContextListener, ApplicationContext
         LinkExample linkExample = new LinkExample();
         linkExample.setOrderByClause("sort DESC");
         List<Link> linkList = linkService.selectByExample(linkExample);
-        application.setAttribute(":linkList",linkList);
+        application.setAttribute("linkList",linkList);
 
     }
 

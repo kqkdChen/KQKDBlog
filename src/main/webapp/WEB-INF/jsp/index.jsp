@@ -143,6 +143,7 @@
                        <p><li style="text-align: center">
                        <a style="margin: 0 auto;" href="${pageContext.request.contextPath}/blog/cate/${blogType.id}">
                        ${blogType.name}(${blogType.total}篇)</a></li></p>
+                        <hr style="margin: 12px 0;">
                     </c:forEach>
                 </ul>
             </div>
@@ -157,17 +158,17 @@
             <h2 class="hometitle">友情链接</h2>
             <ul>
                 <c:forEach items="${linkList}" var="link">
-                    <li><a href="${links.url}" target="_blank">${link.name}</a></li>
+                    <li><a href="${link.url}" target="_blank">${link.name}</a></li>
                 </c:forEach>
             </ul>
         </div>
         <div class="guanzhu" id="follow-us">
-            <h2 class="hometitle">关注我们 么么哒！</h2>
+            <h2 class="hometitle">关注我 么么哒！</h2>
             <ul>
-                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>杨青博客</a></li>
-                <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
-                <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
-                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
+                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>漓丶陈</a></li>
+                <li class="qq"><a href="/" target="_blank"><span>QQ号</span>657424056</a></li>
+                <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>657424056@qq.com</a></li>
+                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>coolchen_programmer</a></li>
                 <li class="wx"><img src="${pageContext.request.contextPath}/static/images/wx.jpg"></li>
             </ul>
         </div>
