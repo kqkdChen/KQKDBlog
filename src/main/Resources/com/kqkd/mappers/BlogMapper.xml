@@ -17,6 +17,8 @@
     <result column="blog_is" jdbcType="INTEGER" property="blogIs" />
     <association property="blogType" javaType="BlogType" column="type_id"
                  select="com.kqkd.dao.BlogTypeMapper.selectByPrimaryKey"/>
+    <association property="blogger" javaType="Blogger" column="blogger_id"
+                 select="com.kqkd.dao.BloggerMapper.selectByPrimaryKey"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kqkd.pojo.Blog">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />

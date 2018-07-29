@@ -1,9 +1,10 @@
 package com.kqkd.service.impl;
 
-import com.kqkd.pojo.BlogExample;
-import com.kqkd.pojo.BlogType;
+import com.github.pagehelper.PageHelper;
+import com.kqkd.pojo.*;
 import com.kqkd.service.BlogService;
 import com.kqkd.service.BlogTypeService;
+import com.kqkd.service.LinkService;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -23,16 +24,34 @@ public class InitComponent implements ServletContextListener, ApplicationContext
     public void contextInitialized(ServletContextEvent sce) {
 
         ServletContext application = sce.getServletContext();
-        /*获得博客类别计数*/
+        /*侧边博客类别*/
         BlogTypeService blogTypeService = (BlogTypeService) applicationContext.getBean("blogTypeService");
-        List<BlogType> blogTypes = blogTypeService.countList();
-        application.setAttribute("blogTypes", blogTypes);
-        /*首页轮播*/
+        List<BlogType> blogTypeList = blogTypeService.countList();
+        application.setAttribute("blogTypeList", blogTypeList);
+        /*侧边点击排行*/
         BlogService blogService = (BlogService) applicationContext.getBean("blogService");
         BlogExample blogExample = new BlogExample();
+        blogExample.setOrderByClause("check_num DESC");
+        PageHelper.offsetPage(0,4);
+        List<Blog> checkNumList = blogService.selectByExample(blogExample);
+        application.setAttribute("checkNumList",checkNumList);
+        /*侧边点赞排行*/
+        PageHelper.offsetPage(0,4);
+        blogExample.setOrderByClause("like_num DESC");
+        List<Blog> likeNumList = blogService.selectByExample(blogExample);
+        application.setAttribute("likeNumList",likeNumList);
+        /*首页轮播*/
         BlogExample.Criteria criteria = blogExample.createCriteria();
         criteria.andTopEqualTo(1);
-        blogService.selectByExample(blogExample);
+        List<Blog> topList = blogService.selectByExample(blogExample);
+        application.setAttribute("topList",topList);
+        /*友情链接*/
+        LinkService linkService = (LinkService) applicationContext.getBean("linkService");
+        LinkExample linkExample = new LinkExample();
+        linkExample.setOrderByClause("sort DESC");
+        List<Link> linkList = linkService.selectByExample(linkExample);
+        application.setAttribute(":linkList",linkList);
+
     }
 
     @Override

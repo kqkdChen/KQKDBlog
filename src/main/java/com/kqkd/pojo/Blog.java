@@ -1,6 +1,7 @@
 package com.kqkd.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Blog {
     private Integer id;
@@ -32,6 +33,27 @@ public class Blog {
     private String content;
 
     private BlogType blogType;
+
+    private Blogger blogger;
+
+    /**非博客实体属性*/
+    private List<String> coverStrList; //封面集合
+
+    public List<String> getCoverStrList() {
+        return coverStrList;
+    }
+
+    public void setCoverStrList(List<String> coverStrList) {
+        this.coverStrList = coverStrList;
+    }
+
+    public Blogger getBlogger() {
+        return blogger;
+    }
+
+    public void setBlogger(Blogger blogger) {
+        this.blogger = blogger;
+    }
 
     public BlogType getBlogType() {
         return blogType;

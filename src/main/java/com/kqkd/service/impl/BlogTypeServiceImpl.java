@@ -15,7 +15,6 @@ public class BlogTypeServiceImpl implements BlogTypeService {
 	@Resource
 	private BlogTypeMapper blogTypeMapper;
 
-
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
 		return blogTypeMapper.deleteByPrimaryKey(id);

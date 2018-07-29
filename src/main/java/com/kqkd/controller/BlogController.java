@@ -29,7 +29,7 @@ public class BlogController {
      * @param id
      * @return mav
      */
-    @RequestMapping("/articles/{id}")
+    @RequestMapping("/article/{id}")
     public ModelAndView info(@PathVariable("id") Integer id){
         ModelAndView mav = new ModelAndView();
         BlogExample blogExample = new BlogExample();

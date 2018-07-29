@@ -8,15 +8,11 @@
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogMapper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogTypeMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BloggerMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/CommentMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/LinkMapper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blog.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogType.java" charset="GBK" />
@@ -32,6 +28,5 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/BloggerService.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/CommentService.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/LinkService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/ab.js" charset="GBK" />
   </component>
 </project>
