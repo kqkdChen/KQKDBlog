@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
-@RequestMapping("/blog")
+@RequestMapping("/")
 public class BlogController {
 
     @Resource
@@ -43,10 +43,11 @@ public class BlogController {
         blog.setCheckNum(blog.getCheckNum()+1);
         //更新查看次数
         blogService.updateByPrimaryKeySelective(blog);
-        PageHelper.offsetPage(0,1);
         //上一篇
+        PageHelper.offsetPage(0,1);
         List<Blog> previous = blogService.selectByExample(blogExample);
         //下一篇
+        PageHelper.offsetPage(0,1);
         List<Blog> next = blogService.selectByExample(blogExample2);
         if(previous.size() > 0){
             mav.addObject("previous",previous.get(0));
@@ -55,7 +56,7 @@ public class BlogController {
             mav.addObject("next",next.get(0));
         }
         mav.addObject("blog",blog);
-        mav.setViewName("info");
+        mav.setViewName("detail");
         return mav;
     }
 

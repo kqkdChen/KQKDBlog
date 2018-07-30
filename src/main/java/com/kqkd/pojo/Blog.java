@@ -1,6 +1,7 @@
 package com.kqkd.pojo;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Blog {
@@ -38,6 +39,15 @@ public class Blog {
 
     /**非博客实体属性*/
     private List<String> coverStrList; //封面集合
+    private List<String> keywordsList; //关键字集合
+
+    public List<String> getKeywordsList() {
+        return keywordsList;
+    }
+
+    public void setKeywordsList(List<String> keywordsList) {
+        this.keywordsList = keywordsList;
+    }
 
     public List<String> getCoverStrList() {
         return coverStrList;

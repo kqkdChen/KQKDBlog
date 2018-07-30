@@ -59,6 +59,9 @@
   <sql id="Blob_Column_List">
     content
   </sql>
+  <select id="selectKeywords" resultMap="BaseResultMap">
+    select keywords from t_blog
+  </select>
   <select id="selectByExampleWithBLOBs" parameterType="com.kqkd.pojo.BlogExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">

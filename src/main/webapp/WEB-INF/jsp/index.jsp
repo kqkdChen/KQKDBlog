@@ -5,7 +5,7 @@
   Time: 17:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="GBK"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
@@ -62,7 +62,7 @@
         <div class="banner">
             <div id="banner" class="fader">
                 <c:forEach var="blog" items="${topList}">
-                    <li class="slide" ><a href="${pageContext.request.contextPath}/blog/article/${blog.id}" target="_blank">
+                    <li class="slide" ><a href="${pageContext.request.contextPath}/article/${blog.id}" target="_blank">
                         <img src="${pageContext.request.contextPath}/static/images/banner01.jpg">
                         <span class="imginfo">${blog.title}</span>
                     </a></li>
@@ -90,10 +90,10 @@
     <div class="blogsbox">
         <c:forEach var="blog" items="${blogList}">
             <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-                <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blog/article/${blog.id}" target="_blank">${blog.title}</a></h3>
+                <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/article/${blog.id}" target="_blank">${blog.title}</a></h3>
                 <c:choose>
                     <c:when test="${blog.coverStrList.size()>1}">
-                        <span class="bplist"><a href="${pageContext.request.contextPath}/blog/article/${blog.id}" title="点击进入">
+                        <span class="bplist"><a href="${pageContext.request.contextPath}/article/${blog.id}" title="点击进入">
                         <c:forEach var="img" items="${blog.coverStrList}">
                             <li><img src="${pageContext.request.contextPath}/static/images/avatar.jpg" alt=""></li>
                         </c:forEach>
@@ -101,7 +101,7 @@
                     </c:when>
                     <c:otherwise>
                         <span class="blogpic">
-                            <a href="${pageContext.request.contextPath}/blog/article/${blog.id}" title="">
+                            <a href="${pageContext.request.contextPath}/article/${blog.id}" title="">
                             <img src="${pageContext.request.contextPath}/static/images/toppic01.jpg" alt=""></a>
                         </span>
                     </c:otherwise>
@@ -122,7 +122,9 @@
     <!--blogsbox end-->
     <div class="sidebar">
         <div class="tuijian">
-            <h2 id="tab" class="hometitle"><a href="javascript:(0);">点击排行&nbsp;&nbsp;</a><a style="margin: 0 10px;" href="javascript:(0);">点赞排行&nbsp;&nbsp;</a><a href="javascript:(0);">博客分类&nbsp;&nbsp;</a></h2>
+            <h2 id="tab" class="hometitle"><a href="javascript:(0);">浏览排行</a>
+                <a style="margin: 0 10px;" href="javascript:(0);"><i class="layui-icon layui-icon-praise" style="font-size: 14px;"></i>点赞排行&nbsp;&nbsp;</a>
+                <a href="javascript:(0);">博客分类&nbsp;&nbsp;</a></h2>
             <div id="content">
                 <ul class="sidenews" style="display: block">
                     <c:forEach var="blog" items="${checkNumList}">
@@ -141,43 +143,17 @@
                 <ul class="sidenews">
                     <c:forEach var="blogType" items="${blogTypeList}">
                        <p><li style="text-align: center">
-                       <a style="margin: 0 auto;" href="${pageContext.request.contextPath}/blog/cate/${blogType.id}">
+                       <a style="margin: 0 auto;" href="${pageContext.request.contextPath}/cate/${blogType.id}">
                        ${blogType.name}(${blogType.total}篇)</a></li></p>
                         <hr style="margin: 12px 0;">
                     </c:forEach>
                 </ul>
             </div>
         </div>
-        <div class="cloud">
-            <h2 class="hometitle">标签云</h2>
-            <ul>
-                <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
-            </ul>
-        </div>
-        <div class="links">
-            <h2 class="hometitle">友情链接</h2>
-            <ul>
-                <c:forEach items="${linkList}" var="link">
-                    <li><a href="${link.url}" target="_blank">${link.name}</a></li>
-                </c:forEach>
-            </ul>
-        </div>
-        <div class="guanzhu" id="follow-us">
-            <h2 class="hometitle">关注我 么么哒！</h2>
-            <ul>
-                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>漓丶陈</a></li>
-                <li class="qq"><a href="/" target="_blank"><span>QQ号</span>657424056</a></li>
-                <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>657424056@qq.com</a></li>
-                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>coolchen_programmer</a></li>
-                <li class="wx"><img src="${pageContext.request.contextPath}/static/images/wx.jpg"></li>
-            </ul>
-        </div>
+        <jsp:include page="front/common/aside.jsp"/>
     </div>
 </article>
-<footer>
-    <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
-</footer>
-<a href="#" class="cd-top">Top</a>
+<jsp:include page="front/common/footer.jsp"/>
 <script src="${pageContext.request.contextPath}/static/layui/layui.js"></script>
 </body>
 </html>
