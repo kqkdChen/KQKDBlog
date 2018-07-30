@@ -20,10 +20,17 @@
     <link href="${pageContext.request.contextPath}/static/layui/css/layui.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/m.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/js/scrollreveal.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/animateInit.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/scrollReveal.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery.easyfader.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/common.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/scrollReveal.js"></script>
+    <style>
+        /* Ensure elements load hidden before ScrollReveal runs */
+        .sr .fooReveal { visibility: hidden; }
+        .guanzhu { perspective: 800px; }
+    </style>
 </head>
 <body>
 <header class="header-navigation" id="header">
@@ -77,18 +84,19 @@
         </div>
         <!--banner end-->
         <div class="toppic">
-            <li> <a href="/" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
+            <li class="top"> <a href="/" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
                 <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
                 <span>学无止境</span> </a> </li>
-            <li> <a href="/" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/images/zd01.jpg"></i>
+            <li class="top"> <a href="/" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/images/zd01.jpg"></i>
                 <h2>个人博客，属于我的小世界！</h2>
                 <span>学无止境</span> </a> </li>
         </div>
     </div>
     <div class="blank"></div>
     <!--blogsbox begin-->
-    <div class="blogsbox">
-        <c:forEach var="blog" items="${blogList}">
+    <div class="blogsbox" id="blogList">
+
+        <%--<c:forEach var="blog" items="${blogList}">
             <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
                 <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/article/${blog.id}" target="_blank">${blog.title}</a></h3>
                 <c:choose>
@@ -110,39 +118,40 @@
                 <div class="bloginfo">
                     <ul>
                         <li class="author"><a href="/">${blog.blogger.nickName}</a></li>
-                        <li class="lmname"><a href="/">${blog.blogType.name}</a></li>
+                        <li class="lmname"><a href="${pageContext.request.contextPath}/cate/${blog.typeId}">${blog.blogType.name}</a></li>
                         <li class="timer"><fmt:formatDate value="${blog.releaseDate}" type="date" pattern="yyyy-MM-dd HH:mm"/> </li>
-                        <li class="view"><span>${blog.checkNum}</span></li>
+                        <li class="view"><span>${blog.checkNum}</span>次阅读</li>
                         <li class="like">${blog.likeNum}</li>
                     </ul>
                 </div>
             </div>
-        </c:forEach>
+        </c:forEach>--%>
+            <input type="hidden" id="URL" value="${pageContext.request.contextPath}"/>
     </div>
     <!--blogsbox end-->
     <div class="sidebar">
         <div class="tuijian">
-            <h2 id="tab" class="hometitle"><a href="javascript:(0);">浏览排行</a>
-                <a style="margin: 0 10px;" href="javascript:(0);"><i class="layui-icon layui-icon-praise" style="font-size: 14px;"></i>点赞排行&nbsp;&nbsp;</a>
+            <h2 data-scroll-reveal="enter bottom over 1s" id="tab" class="hometitle"><a href="javascript:(0);">浏览排行</a>
+                <a  style="margin: 0 10px;" href="javascript:(0);"><i class="layui-icon layui-icon-praise" style="font-size: 14px;"></i>点赞排行&nbsp;&nbsp;</a>
                 <a href="javascript:(0);">博客分类&nbsp;&nbsp;</a></h2>
             <div id="content">
                 <ul class="sidenews" style="display: block">
                     <c:forEach var="blog" items="${checkNumList}">
-                        <li><i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
+                        <li class="sequenced"><i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
                             <p><a href="${pageContext.request.contextPath}/blog/article/${blog.id}">${blog.title}</a></p>
                             <span>${blog.checkNum}次查看</span> </li>
                     </c:forEach>
                 </ul>
                 <ul class="sidenews">
                     <c:forEach var="blog" items="${likeNumList}">
-                        <li><i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
+                        <li class="sequenced"><i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
                             <p><a href="${pageContext.request.contextPath}/blog/article/${blog.id}">${blog.title}</a></p>
                             <span>${blog.likeNum}次点赞</span></li>
                     </c:forEach>
                 </ul>
                 <ul class="sidenews">
                     <c:forEach var="blogType" items="${blogTypeList}">
-                       <p><li style="text-align: center">
+                       <p class="sequenced"><li style="text-align: center">
                        <a style="margin: 0 auto;" href="${pageContext.request.contextPath}/cate/${blogType.id}">
                        ${blogType.name}(${blogType.total}篇)</a></li></p>
                         <hr style="margin: 12px 0;">
@@ -155,6 +164,13 @@
 </article>
 <jsp:include page="front/common/footer.jsp"/>
 <script src="${pageContext.request.contextPath}/static/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '${pageContext.request.contextPath}/static/js/' //你存放新模块的目录，注意，不是layui的模块目录
+    }).use('blog'); //加载入口
+</script>
+<
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/myAnimate.js"></script>
 </body>
 </html>
 

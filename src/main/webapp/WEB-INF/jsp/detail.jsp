@@ -24,6 +24,8 @@
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery.easyfader.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/common.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/scrollreveal.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/animateInit.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/scrollReveal.js"></script>
 </head>
 <body>
@@ -32,7 +34,7 @@
         <div class="logo"><a href="http://www.yangqq.com">杨青个人博客</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
-            <li><a href="index.html"><i class="layui-icon layui-icon-home"></i>&nbsp;首页</a></li>
+            <li><a href="${pageContext.request.contextPath}/index"><i class="layui-icon layui-icon-home"></i>&nbsp;首页</a></li>
             <li><a href="share.html">轻博客</a></li>
             <li><a href="list.html">慢生活</a></li>
             <li><a href="time.html">精品软件</a></li>
@@ -58,7 +60,7 @@
     </nav>
 </header>
 <article>
-    <h1 class="t_nav"><span>您现在的位置是：首页 > ${blog.blogType.name} > 正文</span><a href="${pageContext.request.contextPath}/index" class="n1">首页</a><a href="${pageContext.request.contextPath}/blog/cate/${blog.typeId}" class="n2">${blog.blogType.name}</a></h1>
+    <h1 class="t_nav"><span>您现在的位置是：首页 > <a href="${pageContext.request.contextPath}/article/">轻博客</a> > 正文</span><a href="${pageContext.request.contextPath}/index" class="n1">首页</a><a href="${pageContext.request.contextPath}/article" class="n2">轻博客</a></h1>
     <div class="infosbox">
         <div class="newsview">
             <h3 class="news_title">${blog.title}</h3>
@@ -73,12 +75,12 @@
             </div>
             <div class="tags"><c:forEach items="${fn:split(blog.keywords, ' ')}" var="keyword">
                 <c:if test="${!empty keyword}"><a href="${pageContext.request.contextPath}/keyword/${keyword}" target="_blank">${keyword}</a> &nbsp;</c:if>
-            </c:forEach>
-            <div class="news_about"><strong>简介</strong>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</div>
+            </c:forEach></div>
+            <div class="news_about"><strong>简介</strong>${blog.summary}</div>
             <div class="news_con">${blog.content}</div>
         </div>
         <div class="share">
-            <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>13</b>)</p>
+            <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 点赞！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>13</b>)</p>
             <p class="dasbox"><a href="javascript:void(0)" onClick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a></p>
             <div class="hide_box"></div>
             <div class="shang_box"> <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">关闭</a>
@@ -86,7 +88,7 @@
                     <p>感谢您的支持，我会继续努力的!</p>
                 </div>
                 <div class="shang_payimg"> <img src="images/alipayimg.jpg" alt="扫码支持" title="扫一扫"> </div>
-                <div class="pay_explain">扫码打赏，你说多少就多少</div>
+                <div class="pay_explain">扫码打赏，一分也是爱</div>
                 <div class="shang_payselect">
                     <div class="pay_item checked" data-id="alipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="images/alipay.jpg" alt="支付宝"></span> </div>
                     <div class="pay_item" data-id="weipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="images/wechat.jpg" alt="微信"></span> </div>
@@ -138,5 +140,6 @@
 </article>
 <jsp:include page="front/common/footer.jsp"/>
 <script src="${pageContext.request.contextPath}/static/layui/layui.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/myAnimate.js"></script>
 </body>
 </html>

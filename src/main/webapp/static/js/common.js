@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     //检测ie 6789
     if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
-        window.scrollReveal = new scrollReveal({reset: true});
+      window.scrollReveal = new scrollReveal({reset: true});
     }
 
     /*banner*/
@@ -109,10 +109,10 @@
         oLi[i].index = i;
         oLi[i].onmouseover = function ()
         {
-            for(var n = 0; n < oLi.length; n++) oLi[n].className="";
-            this.className = "current";
-            for(var n = 0; n < oUls.length; n++) oUls[n].style.display = "none";
-            oUls[this.index].style.display = "block"
+          for(var n = 0; n < oLi.length; n++) oLi[n].className="";
+          this.className = "current";
+          for(var n = 0; n < oUls.length; n++) oUls[n].style.display = "none";
+          oUls[this.index].style.display = "block";
         }
     };
 

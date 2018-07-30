@@ -64,7 +64,7 @@ public class InitComponent implements ServletContextListener, ApplicationContext
         /*友情链接*/
         LinkService linkService = (LinkService) applicationContext.getBean("linkService");
         LinkExample linkExample = new LinkExample();
-        linkExample.setOrderByClause("sort DESC");
+        linkExample.setOrderByClause("sort");
         List<Link> linkList = linkService.selectByExample(linkExample);
         application.setAttribute("linkList",linkList);
 

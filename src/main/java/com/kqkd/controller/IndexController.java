@@ -24,7 +24,7 @@ public class IndexController {
     @RequestMapping("index")
     public ModelAndView index(){
         ModelAndView mav = new ModelAndView();
-        PageHelper.offsetPage(0, 10);
+        PageHelper.offsetPage(0, 8);
         BlogExample blogExample = new BlogExample();
         blogExample.setOrderByClause("release_date DESC");
         List<Blog> blogList = blogService.selectByExample(blogExample);

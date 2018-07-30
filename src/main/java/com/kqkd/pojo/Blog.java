@@ -39,14 +39,14 @@ public class Blog {
 
     /**非博客实体属性*/
     private List<String> coverStrList; //封面集合
-    private List<String> keywordsList; //关键字集合
+    private String releaseDateStr; //发布日期字符串
 
-    public List<String> getKeywordsList() {
-        return keywordsList;
+    public String getReleaseDateStr() {
+        return releaseDateStr;
     }
 
-    public void setKeywordsList(List<String> keywordsList) {
-        this.keywordsList = keywordsList;
+    public void setReleaseDateStr(String releaseDateStr) {
+        this.releaseDateStr = releaseDateStr;
     }
 
     public List<String> getCoverStrList() {

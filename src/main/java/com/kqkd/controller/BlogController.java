@@ -6,16 +6,24 @@ import com.kqkd.pojo.BlogExample;
 import com.kqkd.pojo.BlogType;
 import com.kqkd.service.BlogService;
 import com.kqkd.service.BlogTypeService;
+import com.kqkd.util.ResponseUtil;
+import net.sf.json.JSONObject;
+import org.codehaus.jackson.map.util.JSONPObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("")
 public class BlogController {
 
     @Resource
@@ -24,13 +32,34 @@ public class BlogController {
     @Resource
     private BlogTypeService blogTypeService;
 
-    /**
-     * 博客详情
-     * @param id
-     * @return mav
-     */
+    @RequestMapping("/list")
+    public void articles(@RequestParam(value = "page",required = false) Integer page,
+                         @RequestParam(value = "limit",required = false) Integer limit,
+                         @RequestParam(value = "size",required = false) Integer size,
+                         HttpServletResponse response) throws Exception{
+        Integer pages = null;
+        JSONObject result=new JSONObject();
+        BlogExample blogExample = new BlogExample();
+        blogExample.setOrderByClause("release_date DESC");
+        if(size % limit == 0){
+            pages = size/limit;
+        }else{
+            pages = (size/limit)+1;
+        }
+        PageHelper.startPage(page,limit);
+        List<Blog> blogList = blogService.selectByExample(blogExample);
+        SimpleDateFormat simpleFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        for(Blog b : blogList){
+            String releaseDateStr = simpleFormatter.format(b.getReleaseDate());
+            b.setReleaseDateStr(releaseDateStr);
+        }
+        result.put("blogList", blogList);
+        result.put("pages", pages);
+        ResponseUtil.write(response,result);
+    }
+
     @RequestMapping("/article/{id}")
-    public ModelAndView info(@PathVariable("id") Integer id){
+    public ModelAndView info(@PathVariable(value = "id",required = false) Integer id){
         ModelAndView mav = new ModelAndView();
         BlogExample blogExample = new BlogExample();
         blogExample.setOrderByClause("id DESC");
@@ -60,11 +89,6 @@ public class BlogController {
         return mav;
     }
 
-    /**
-     * 博客类别集合
-     * @param id
-     * @return mav
-     */
     @RequestMapping("/cate/{id}")
     public ModelAndView cate(@PathVariable("id") Integer id){
         ModelAndView mav = new ModelAndView();

@@ -113,7 +113,7 @@
 .cloud ul a:hover { border-radius: 0; text-shadow: #000 1px 1px 1px }
 /*links*/
 .links ul { overflow: hidden }
-.links ul li { line-height: 24px; margin: 0 10px 10px 0; display: block; float: left }
+.links ul li { line-height: 24px; margin: 0 15px 10px 0; display: block; float: left }
 .links ul a:hover { text-decoration: underline; color: #000 }
 /*guanzhu*/
 .guanzhu ul li { font-size: 12px; margin-bottom: 10px; background: #fff; color: #525252; line-height: 40px; padding: 0 0 0 34px; border: 1px solid #DDD; border-radius: 2px; position: relative; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
