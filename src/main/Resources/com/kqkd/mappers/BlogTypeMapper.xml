@@ -45,7 +45,7 @@
     GROUP BY bt.name
     ORDER BY bt.id
   </select>
-  <select id="selectByExample" parameterType="com.kqkd.pojo.BlogTypeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.kqkd.pojo.example.BlogTypeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

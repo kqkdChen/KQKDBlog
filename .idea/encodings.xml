@@ -1,35 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BlogTypeMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/BloggerMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/CommentMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/LinkMapper.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogMapper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BlogTypeMapper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/BloggerMapper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/CommentMapper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/LinkMapper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blog.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogType.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BlogTypeExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blogger.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/BloggerExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Comment.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/CommentExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Link.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/LinkExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/BlogService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/BlogTypeService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/BloggerService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/CommentService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/LinkService.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/util/CryptographyUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/util/DateUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/static/js/scrollreveal.min.js" charset="GBK" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/SiteDataMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/VisitMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/VisitMapper.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/SiteDataMapper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/VisitMapper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/listener/IpAndDateListener.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blog.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/SiteData.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Visit.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Visit.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/SiteDataExample.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/VisitExample.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/VisitExample.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/SiteDataService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/VisitService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/util/DateUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/util/PageUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/util/StringUtil.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 package com.kqkd.dao;
 
 import com.kqkd.pojo.BlogType;
-import com.kqkd.pojo.BlogTypeExample;
+import com.kqkd.pojo.example.BlogTypeExample;
 
 import java.util.List;
 

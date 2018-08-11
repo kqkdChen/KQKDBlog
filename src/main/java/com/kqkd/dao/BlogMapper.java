@@ -1,7 +1,7 @@
 package com.kqkd.dao;
 
 import com.kqkd.pojo.Blog;
-import com.kqkd.pojo.BlogExample;
+import com.kqkd.pojo.example.BlogExample;
 
 import java.util.List;
 
@@ -25,4 +25,5 @@ public interface BlogMapper {
     int updateByPrimaryKeyWithBLOBs(Blog record);
 
     int updateByPrimaryKey(Blog record);
+
 }

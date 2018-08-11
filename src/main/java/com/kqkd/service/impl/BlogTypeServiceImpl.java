@@ -2,7 +2,7 @@ package com.kqkd.service.impl;
 
 import com.kqkd.dao.BlogTypeMapper;
 import com.kqkd.pojo.BlogType;
-import com.kqkd.pojo.BlogTypeExample;
+import com.kqkd.pojo.example.BlogTypeExample;
 import com.kqkd.service.BlogTypeService;
 import org.springframework.stereotype.Service;
 

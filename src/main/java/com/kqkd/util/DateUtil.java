@@ -1,17 +1,19 @@
 package com.kqkd.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
- * ÈÕÆÚ¹¤¾ßÀà
+ * æ—¥æœŸå·¥å…·ç±»
  * @author Administrator
  *
  */
 public class DateUtil {
 
 	/**
-	 * ÈÕÆÚ¶ÔÏó×ª×Ö·û´®
+	 * æ—¥æœŸå¯¹è±¡è½¬å­—ç¬¦ä¸²
 	 * @param date
 	 * @param format
 	 * @return
@@ -24,9 +26,9 @@ public class DateUtil {
 		}
 		return result;
 	}
-	
+
 	/**
-	 * ×Ö·û´®×ªÈÕÆÚ¶ÔÏó
+	 * å­—ç¬¦ä¸²è½¬æ—¥æœŸå¯¹è±¡
 	 * @param str
 	 * @param format
 	 * @return
@@ -39,11 +41,11 @@ public class DateUtil {
 		SimpleDateFormat sdf=new SimpleDateFormat(format);
 		return sdf.parse(str);
 	}
-	
-	public static String getCurrentDateStr()throws Exception{
-		Date date=new Date();
+
+	public static String getCurrentDateStr(Date date)throws Exception{
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
 		return sdf.format(date);
 	}
-	
+
+
 }

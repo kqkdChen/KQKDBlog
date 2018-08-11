@@ -1,5 +1,6 @@
 package com.kqkd.pojo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,9 +38,19 @@ public class Blog {
 
     private Blogger blogger;
 
-    /**·Ç²©¿ÍÊµÌåÊôĞÔ*/
-    private List<String> coverStrList; //·âÃæ¼¯ºÏ
-    private String releaseDateStr; //·¢²¼ÈÕÆÚ×Ö·û´®
+    /**éåšå®¢å®ä½“å±æ€§*/
+    private String releaseDateStr; //å‘å¸ƒæ—¥æœŸå­—ç¬¦ä¸²
+
+    private Integer hotNum; //çƒ­åŠ›å€¼
+
+
+    public Integer getHotNum() {
+        return hotNum;
+    }
+
+    public void setHotNum(Integer hotNum) {
+        this.hotNum = hotNum;
+    }
 
     public String getReleaseDateStr() {
         return releaseDateStr;
@@ -47,14 +58,6 @@ public class Blog {
 
     public void setReleaseDateStr(String releaseDateStr) {
         this.releaseDateStr = releaseDateStr;
-    }
-
-    public List<String> getCoverStrList() {
-        return coverStrList;
-    }
-
-    public void setCoverStrList(List<String> coverStrList) {
-        this.coverStrList = coverStrList;
     }
 
     public Blogger getBlogger() {

@@ -1,18 +1,14 @@
 package com.kqkd.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.kqkd.pojo.Blog;
-import com.kqkd.pojo.BlogExample;
+import com.kqkd.pojo.example.BlogExample;
 import com.kqkd.service.BlogService;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("")
@@ -24,12 +20,13 @@ public class IndexController {
     @RequestMapping("index")
     public ModelAndView index(){
         ModelAndView mav = new ModelAndView();
-        PageHelper.offsetPage(0, 8);
         BlogExample blogExample = new BlogExample();
-        blogExample.setOrderByClause("release_date DESC");
-        List<Blog> blogList = blogService.selectByExample(blogExample);
-        mav.addObject("blogList", blogList);
-        mav.setViewName("index");
+        /* 首页轮播,1表示置顶,按照点赞数量排序 */
+        BlogExample.Criteria criteria = blogExample.createCriteria();
+        criteria.andTopEqualTo(1);
+        List<Blog> topList = blogService.selectByExample(blogExample);
+        mav.addObject("topList", topList);
+        mav.setViewName("front/index");
         return mav;
     }
 

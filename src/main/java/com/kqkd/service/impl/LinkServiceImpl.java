@@ -2,7 +2,7 @@ package com.kqkd.service.impl;
 
 import com.kqkd.dao.LinkMapper;
 import com.kqkd.pojo.Link;
-import com.kqkd.pojo.LinkExample;
+import com.kqkd.pojo.example.LinkExample;
 import com.kqkd.service.LinkService;
 import org.springframework.stereotype.Service;
 

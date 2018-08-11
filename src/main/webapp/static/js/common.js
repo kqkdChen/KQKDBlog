@@ -86,6 +86,14 @@
             }, scroll_top_duration
         );
     });
+
+  $back_to_top.on('click', function (event) {
+    event.preventDefault();
+    $('body,html').animate({
+        scrollTop: 0,
+      }, scroll_top_duration
+    );
+  });
     
     //设置固定关注我们
 /*if ($('#follow-us')){
@@ -102,7 +110,7 @@
     };
 }*/
 
-    var oLi = document.getElementById("tab").getElementsByTagName("a");
+    /*var oLi = document.getElementById("tab").getElementsByTagName("a");
     var oUls = document.getElementById("content").getElementsByTagName("ul");
     for(var i = 0; i < oLi.length; i++)
     {
@@ -114,6 +122,6 @@
           for(var n = 0; n < oUls.length; n++) oUls[n].style.display = "none";
           oUls[this.index].style.display = "block";
         }
-    };
+    };*/
 
 });

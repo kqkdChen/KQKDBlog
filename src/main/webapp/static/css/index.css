@@ -26,14 +26,15 @@
 .toppic li:hover i { opacity: 1; }
 .toppic li:last-child { margin-top: 19px }
 /*blogsbox*/
-.blogsbox { width: 66%; overflow: hidden; float: left }
+.blogsbox { width: 66%; overflow: hidden; float: left; }
 .blogs { overflow: hidden; margin-bottom: 20px; padding: 20px; background: #FFF; -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; }
-.blogs .blogpic { float: left; width: 30%; max-height: 170px; margin-right: 20px; display: block; overflow: hidden; }
-.blogs .blogpic img { width: 100%; height: auto; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; margin-bottom: 10px }
+.blogs .blogpic { float: left; width: 30%; max-height: 120px; margin-right: 20px; display: block; overflow: hidden; }
+.blogs .blogpic img {width: 100%; height: auto; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; margin-bottom: 10px }
 .blogs .blogpic :hover img { transform: scale(1.1) }
 .blogs .blogtitle { margin: 0 0 10px 0; font-size: 20px; overflow: hidden; }
 .blogs .blogtitle a:hover { color: #337ab7; }
-.blogs .blogtext { font-size: 14px; color: #566573; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; margin-top: 20px }
+.blogs .blogtitle a {color: #555; font-weight: 600}
+.blogs .blogtext { font-size: 14px; line-height: 1.5; color: #566573; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; margin-top: 20px }
 .bloginfo { overflow: hidden; margin-top: 30px }
 .bloginfo ul li { float: left; font-size: 12px; padding: 0 0 0 20px; margin: 0 15px 0 0; color: #748594; line-height: 1.5; display: inline-block; }
 .bloginfo ul li a { color: #748594; }
@@ -58,7 +59,7 @@
 .sidebar { width: 32%; overflow: hidden; float: right }
 .sidebar div { padding: 35px 30px; margin-bottom: 20px; background: #FFF; -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); }
 .hometitle { font-size: 16px; color: #282828; font-weight: 600; margin: 0; text-transform: uppercase; padding-bottom: 15px; margin-bottom: 15px; position: relative; }
-.hometitle:after { content: ""; background-color: #282828; left: 0; width: 65px; height: 2px; bottom: 0; position: absolute; -webkit-transition: 0.5s; -moz-transition: 0.5s; -ms-transition: 0.5s; -o-transition: 0.5s; transition: 0.5s; }
+.hometitle:after { content: ""; background-color: #282828; left: 0; width: 85px; height: 2px; bottom: 0; position: absolute; -webkit-transition: 0.5s; -moz-transition: 0.5s; -ms-transition: 0.5s; -o-transition: 0.5s; transition: 0.5s; }
 .sidebar div:hover ::after { width: 100%; }
 /*//////////////sidebar//////////////////*/
 /* zhuanti */
@@ -197,7 +198,7 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .tags a { background: #F4650E; padding: 3px 8px; margin: 0 5px 0 0; color: #fff; }
 .tags { margin: 30px 0; }
 .infosbox .news_con { line-height: 1.8; font-size: 16px; text-align: justify; }
-.infosbox .news_con p { margin-bottom: 25x }
+.infosbox .news_con p { margin-bottom: 25px }
 .infosbox .news_con img { max-width: 650px; height: auto; }
 .infosbox .share { padding: 20px; }
 .nextinfo { line-height: 24px; width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }
@@ -232,11 +233,11 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .meandblog li a:hover { color: #000 }
 /*money*/
 .dasbox{ width:130px; float:left; margin-left:40px;background: url(../images/dsbz.jpg) no-repeat left 20px center #E2523A ;
-    
+
     box-shadow: 1px 2px 6px 0px rgba(0,0,0,.2);
     border-radius: 3px;
     line-height: 40px; padding-left:10px;
-    text-align: center; 
+    text-align: center;
    }
 .hide_box { z-index: 999; filter: alpha(opacity=50); background: #666; opacity: 0.5; -moz-opacity: 0.5; left: 0; top: 0; height: 99%; width: 100%; position: fixed; display: none; }
 .shang_box { width: 430px; padding: 40px 10px; background: #fff url(../images/tbg.jpg) no-repeat left top 30px; ; border-radius: 10px; position: fixed; z-index: 1000; left: 50%; top: 50%; margin-left: -280px; margin-top: -280px; border: 1px dotted #dedede; display: none; }
@@ -253,3 +254,9 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .shang_payselect { text-align: center; margin: 0 auto; margin-top: 40px; cursor: pointer; height: 60px; width: 280px; }
 .shang_payselect .pay_item { display: inline-block; margin-right: 10px; float: left; }
 .shang_payselect img { float: left }
+
+
+ .layui-laypage a, .layui-laypage span{
+     font-size: 16px;
+ }
+

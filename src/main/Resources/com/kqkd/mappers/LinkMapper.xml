@@ -39,7 +39,7 @@
   <sql id="Base_Column_List">
     id, name, url, sort
   </sql>
-  <select id="selectByExample" parameterType="com.kqkd.pojo.LinkExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.kqkd.pojo.example.LinkExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

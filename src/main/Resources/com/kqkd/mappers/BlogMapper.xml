@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kqkd.dao.BlogMapper">
-  <resultMap id="BaseResultMap" type="com.kqkd.pojo.Blog">
+  <resultMap id="BaseResultMap" type="Blog">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="blogger_id" jdbcType="INTEGER" property="bloggerId" />
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
@@ -20,7 +20,7 @@
     <association property="blogger" javaType="Blogger" column="blogger_id"
                  select="com.kqkd.dao.BloggerMapper.selectByPrimaryKey"/>
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kqkd.pojo.Blog">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="Blog">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -62,7 +62,7 @@
   <select id="selectKeywords" resultMap="BaseResultMap">
     select keywords from t_blog
   </select>
-  <select id="selectByExampleWithBLOBs" parameterType="com.kqkd.pojo.BlogExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.kqkd.pojo.example.BlogExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -79,7 +79,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.kqkd.pojo.BlogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.kqkd.pojo.example.BlogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

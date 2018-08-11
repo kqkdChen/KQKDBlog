@@ -54,7 +54,7 @@
   <sql id="Blob_Column_List">
     basic_info
   </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.kqkd.pojo.BloggerExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExampleWithBLOBs" parameterType="com.kqkd.pojo.example.BloggerExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
       distinct
@@ -71,7 +71,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.kqkd.pojo.BloggerExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.kqkd.pojo.example.BloggerExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct

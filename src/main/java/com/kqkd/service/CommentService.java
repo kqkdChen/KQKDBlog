@@ -1,7 +1,7 @@
 package com.kqkd.service;
 
 import com.kqkd.pojo.Comment;
-import com.kqkd.pojo.CommentExample;
+import com.kqkd.pojo.example.CommentExample;
 
 import java.util.List;
 

@@ -16,10 +16,7 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.kqkd.service.impl.InitComponent</listener-class>
+        <listener-class>com.kqkd.service.impl.InitListener</listener-class>
     </listener>
 
     <!-- spring mvc dispatcher(前端控制器) -->

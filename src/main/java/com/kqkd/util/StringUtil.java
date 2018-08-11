@@ -4,40 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ×Ö·û´®¹¤¾ßÀà
+ * å­—ç¬¦ä¸²å·¥å…·ç±»
  * @author 
  *
  */
 public class StringUtil {
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇ¿Õ
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯ç©º
 	 * @param str
 	 * @return
 	 */
 	public static boolean isEmpty(String str){
-		if(str==null||"".equals(str.trim())){
-			return true;
-		}else{
-			return false;
-		}
+		return str == null || "".equals(str.trim());
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ²»ÊÇ¿Õ
+	 * åˆ¤æ–­æ˜¯å¦ä¸æ˜¯ç©º
 	 * @param str
 	 * @return
 	 */
 	public static boolean isNotEmpty(String str){
-		if((str!=null)&&!"".equals(str.trim())){
-			return true;
-		}else{
-			return false;
-		}
+		return !isEmpty(str);
 	}
 	
 	/**
-	 * ¸ñÊ½»¯Ä£ºı²éÑ¯
+	 * æ ¼å¼åŒ–æ¨¡ç³ŠæŸ¥è¯¢
 	 * @param str
 	 * @return
 	 */
@@ -50,12 +42,12 @@ public class StringUtil {
 	}
 	
 	/**
-	 * ¹ıÂËµô¼¯ºÏÀïµÄ¿Õ¸ñ
+	 * è¿‡æ»¤æ‰é›†åˆé‡Œçš„ç©ºæ ¼
 	 * @param list
 	 * @return
 	 */
 	public static List<String> filterWhite(List<String> list){
-		List<String> resultList=new ArrayList<String>();
+		List<String> resultList=new ArrayList<>();
 		for(String l:list){
 			if(isNotEmpty(l)){
 				resultList.add(l);
@@ -65,16 +57,16 @@ public class StringUtil {
 	}
 	
 	/**
-	 * Êı×éÅĞ·Ç¿Õ
+	 * æ•°ç»„åˆ¤éç©º
 	 * @param o
 	 * @return
 	 */
 	public static boolean arrayIsNotEmpty(Object []o){
-		return o !=null || (o != null && o.length != 0);
+		return o != null || (o.length != 0 && o != null);
 	}
 
 	/**
-	 * Êı×éÅĞ¿Õ
+	 * æ•°ç»„åˆ¤ç©º
 	 * @param o
 	 * @return
 	 */

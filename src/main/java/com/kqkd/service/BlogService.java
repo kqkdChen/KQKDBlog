@@ -1,7 +1,7 @@
 package com.kqkd.service;
 
 import com.kqkd.pojo.Blog;
-import com.kqkd.pojo.BlogExample;
+import com.kqkd.pojo.example.BlogExample;
 
 import java.util.List;
 

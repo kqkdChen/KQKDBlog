@@ -1,7 +1,7 @@
 package com.kqkd.service;
 
 import com.kqkd.pojo.Link;
-import com.kqkd.pojo.LinkExample;
+import com.kqkd.pojo.example.LinkExample;
 
 import java.util.List;
 
