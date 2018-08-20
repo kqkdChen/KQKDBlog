@@ -1,6 +1,7 @@
 package com.kqkd.pojo.example;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VisitExample {
@@ -304,73 +305,133 @@ public class VisitExample {
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoIsNull() {
-            addCriterion("visit_info is null");
+        public Criteria andVisitTimeIsNull() {
+            addCriterion("visit_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoIsNotNull() {
-            addCriterion("visit_info is not null");
+        public Criteria andVisitTimeIsNotNull() {
+            addCriterion("visit_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoEqualTo(String value) {
-            addCriterion("visit_info =", value, "visitInfo");
+        public Criteria andVisitTimeEqualTo(Date value) {
+            addCriterion("visit_time =", value, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoNotEqualTo(String value) {
-            addCriterion("visit_info <>", value, "visitInfo");
+        public Criteria andVisitTimeNotEqualTo(Date value) {
+            addCriterion("visit_time <>", value, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoGreaterThan(String value) {
-            addCriterion("visit_info >", value, "visitInfo");
+        public Criteria andVisitTimeGreaterThan(Date value) {
+            addCriterion("visit_time >", value, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoGreaterThanOrEqualTo(String value) {
-            addCriterion("visit_info >=", value, "visitInfo");
+        public Criteria andVisitTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("visit_time >=", value, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoLessThan(String value) {
-            addCriterion("visit_info <", value, "visitInfo");
+        public Criteria andVisitTimeLessThan(Date value) {
+            addCriterion("visit_time <", value, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoLessThanOrEqualTo(String value) {
-            addCriterion("visit_info <=", value, "visitInfo");
+        public Criteria andVisitTimeLessThanOrEqualTo(Date value) {
+            addCriterion("visit_time <=", value, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoLike(String value) {
-            addCriterion("visit_info like", value, "visitInfo");
+        public Criteria andVisitTimeIn(List<Date> values) {
+            addCriterion("visit_time in", values, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoNotLike(String value) {
-            addCriterion("visit_info not like", value, "visitInfo");
+        public Criteria andVisitTimeNotIn(List<Date> values) {
+            addCriterion("visit_time not in", values, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoIn(List<String> values) {
-            addCriterion("visit_info in", values, "visitInfo");
+        public Criteria andVisitTimeBetween(Date value1, Date value2) {
+            addCriterion("visit_time between", value1, value2, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoNotIn(List<String> values) {
-            addCriterion("visit_info not in", values, "visitInfo");
+        public Criteria andVisitTimeNotBetween(Date value1, Date value2) {
+            addCriterion("visit_time not between", value1, value2, "visitTime");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoBetween(String value1, String value2) {
-            addCriterion("visit_info between", value1, value2, "visitInfo");
+        public Criteria andVisitPageIsNull() {
+            addCriterion("visit_page is null");
             return (Criteria) this;
         }
 
-        public Criteria andVisitInfoNotBetween(String value1, String value2) {
-            addCriterion("visit_info not between", value1, value2, "visitInfo");
+        public Criteria andVisitPageIsNotNull() {
+            addCriterion("visit_page is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageEqualTo(String value) {
+            addCriterion("visit_page =", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageNotEqualTo(String value) {
+            addCriterion("visit_page <>", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageGreaterThan(String value) {
+            addCriterion("visit_page >", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageGreaterThanOrEqualTo(String value) {
+            addCriterion("visit_page >=", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageLessThan(String value) {
+            addCriterion("visit_page <", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageLessThanOrEqualTo(String value) {
+            addCriterion("visit_page <=", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageLike(String value) {
+            addCriterion("visit_page like", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageNotLike(String value) {
+            addCriterion("visit_page not like", value, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageIn(List<String> values) {
+            addCriterion("visit_page in", values, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageNotIn(List<String> values) {
+            addCriterion("visit_page not in", values, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageBetween(String value1, String value2) {
+            addCriterion("visit_page between", value1, value2, "visitPage");
+            return (Criteria) this;
+        }
+
+        public Criteria andVisitPageNotBetween(String value1, String value2) {
+            addCriterion("visit_page not between", value1, value2, "visitPage");
             return (Criteria) this;
         }
     }

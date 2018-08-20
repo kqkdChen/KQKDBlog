@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,17 +24,11 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
-    @RequestMapping("/flow")
+    @RequestMapping("flowPage")
     public void flow( Integer page, Integer limit, Integer size, HttpServletResponse response) throws Exception{
-        int pages;
         JSONObject result=new JSONObject();
         BlogExample blogExample = new BlogExample();
         blogExample.setOrderByClause("release_date DESC");
-        if(size % limit == 0){
-            pages = size/limit;
-        }else{
-            pages = (size/limit)+1;
-        }
         PageHelper.startPage(page,limit);
         List<Blog> blogList = blogService.selectByExample(blogExample);
         for(Blog b : blogList){
@@ -43,11 +36,12 @@ public class BlogController {
             b.setReleaseDateStr(formatDate);
         }
         result.put("blogList", blogList);
+        int pages=size%limit==0?size/limit:size/limit+1;
         result.put("pages", pages);
         ResponseUtil.write(response,result);
     }
 
-    @RequestMapping("/article/{id}")
+    @RequestMapping("blog/{id}")
     public ModelAndView info(@PathVariable(value = "id") Integer id){
         ModelAndView mav = new ModelAndView();
         BlogExample blogExample = new BlogExample();
@@ -78,7 +72,7 @@ public class BlogController {
         return mav;
     }
 
-    @RequestMapping("/cate/{id}")
+    @RequestMapping("cate/{id}")
     public ModelAndView cate(@PathVariable("id") Integer id){
         ModelAndView mav = new ModelAndView();
         BlogExample blogExample = new BlogExample();
@@ -93,7 +87,7 @@ public class BlogController {
         return mav;
     }
 
-    @RequestMapping("/catePage/{id}")
+    @RequestMapping("catePage/{id}")
     public void catePage(@PathVariable("id")Integer id, Integer page, Integer limit, HttpServletResponse response) throws Exception{
         JSONObject result = new JSONObject();
         BlogExample blogExample = new BlogExample();
@@ -111,46 +105,53 @@ public class BlogController {
         ResponseUtil.write(response,result);
     }
 
-    @RequestMapping("/articles/{flag}")
-    public ModelAndView articles(@PathVariable("flag") Integer flag){
+    @RequestMapping("life")
+    public ModelAndView life(){
         ModelAndView mav = new ModelAndView();
         BlogExample blogExample = new BlogExample();
+        blogExample.setOrderByClause("like_num DESC");
         BlogExample.Criteria criteria = blogExample.createCriteria();
-        List<Blog> blogList = new ArrayList<>();
-        /* 1表示查询轻博客，2表示查询慢生活*/
-        if(flag == 1){
-            criteria.andKeywordsNotLike("%生活%");
-            blogList = blogService.selectByExample(blogExample);
-            mav.setViewName("front/tumblr");
-        }else if(flag == 2){
-            criteria.andKeywordsLike("%生活%");
-            blogList = blogService.selectByExample(blogExample);
-            mav.setViewName("front/life");
-        }
-        if(blogList.size() > 0){
-            mav.addObject("count",blogList.size());
-        }
-        mav.addObject("flag", flag);
+        criteria.andKeywordsLike("%生活%");
+        List<Blog> blogList = blogService.selectByExample(blogExample);
+        mav.addObject("count",blogList.size());
+        PageHelper.offsetPage(0, 8);
+        List<Blog> pageBlogList = blogService.selectByExample(blogExample);
+        mav.addObject("blogList",pageBlogList);
+        mav.addObject("firstLimit",8);
+        mav.setViewName("front/life");
         return mav;
     }
 
-    @RequestMapping("/page")
-    public void page(Integer page, Integer limit, Integer flag, HttpServletResponse response) throws Exception{
+    @RequestMapping("lifeFlow")
+    public void lifePage(Integer page, Integer limit, HttpServletResponse response) throws Exception {
         JSONObject result = new JSONObject();
-        /* 1表示查询轻博客，2表示查询慢生活*/
+        BlogExample blogExample = new BlogExample();
+        blogExample.setOrderByClause("like_num DESC");
+        BlogExample.Criteria criteria = blogExample.createCriteria();
+        criteria.andKeywordsLike("%生活%");
+        PageHelper.startPage(page,limit);
+        List<Blog> blogList = blogService.selectByExample(blogExample);
+        result.put("blogList",blogList);
+        ResponseUtil.write(response,result);
+    }
+
+
+    @RequestMapping("blog")
+    public ModelAndView blog(){
+        ModelAndView mav = new ModelAndView();
+        List<Blog> blogList = blogService.selectByExample(new BlogExample());
+        mav.addObject("count",blogList.size());
+        mav.setViewName("front/blog");
+        return mav;
+    }
+
+    @RequestMapping("blogPage")
+    public void blogPage(Integer page, Integer limit, HttpServletResponse response) throws Exception {
+        JSONObject result = new JSONObject();
         BlogExample blogExample = new BlogExample();
         blogExample.setOrderByClause("release_date DESC");
-        BlogExample.Criteria criteria = blogExample.createCriteria();
-        List<Blog> blogList = new ArrayList<>();
-        if(flag == 1){
-            criteria.andKeywordsNotLike(StringUtil.formatLike("生活"));
-            PageHelper.startPage(page,limit);
-            blogList = blogService.selectByExample(blogExample);
-        }else if(flag == 2){
-            criteria.andKeywordsLike("%生活%");
-            PageHelper.startPage(page,limit);
-            blogList = blogService.selectByExample(blogExample);
-        }
+        PageHelper.startPage(page,limit);
+        List<Blog> blogList = blogService.selectByExample(blogExample);
         if(blogList.size() > 0){
             for(Blog b : blogList){
                 String formatDate = DateUtil.formatDate(b.getReleaseDate(), "yyyy-MM-dd HH:mm");
@@ -160,6 +161,7 @@ public class BlogController {
         result.put("blogList",blogList);
         ResponseUtil.write(response,result);
     }
+
 
     @RequestMapping("tag/{tagName}")
     public ModelAndView tag(@PathVariable("tagName")String tagName){
@@ -192,6 +194,33 @@ public class BlogController {
             }
         }
         result.put("blogList", blogList);
+        ResponseUtil.write(response,result);
+    }
+
+    @RequestMapping("time")
+    public ModelAndView time() {
+        ModelAndView mav = new ModelAndView();
+        List<Blog> blogList = blogService.selectByExample(new BlogExample());
+        mav.addObject("count",blogList.size());
+        mav.setViewName("front/time");
+        return mav;
+    }
+
+
+    @RequestMapping("timePage")
+    public void timePage(Integer page, Integer limit, HttpServletResponse response) throws Exception {
+        JSONObject result = new JSONObject();
+        BlogExample blogExample = new BlogExample();
+        blogExample.setOrderByClause("release_date DESC");
+        PageHelper.startPage(page,limit);
+        List<Blog> blogList = blogService.selectByExample(blogExample);
+        if(blogList.size() > 0){
+            for(Blog b : blogList){
+                String formatDate = DateUtil.formatDate(b.getReleaseDate(), "yyyy-MM-dd");
+                b.setReleaseDateStr(formatDate);
+            }
+        }
+        result.put("blogList",blogList);
         ResponseUtil.write(response,result);
     }
 

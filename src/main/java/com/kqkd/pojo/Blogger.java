@@ -40,7 +40,7 @@ public class Blogger {
     }
 
     public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum == null ? null : phoneNum.trim();
+        this.phoneNum = phoneNum;
     }
 
     public String getEmail() {
@@ -48,7 +48,7 @@ public class Blogger {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getNickName() {
@@ -56,7 +56,7 @@ public class Blogger {
     }
 
     public void setNickName(String nickName) {
-        this.nickName = nickName == null ? null : nickName.trim();
+        this.nickName = nickName;
     }
 
     public String getPassword() {
@@ -64,7 +64,7 @@ public class Blogger {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public Integer getSex() {
@@ -80,7 +80,7 @@ public class Blogger {
     }
 
     public void setTrueName(String trueName) {
-        this.trueName = trueName == null ? null : trueName.trim();
+        this.trueName = trueName;
     }
 
     public String getIntroduction() {
@@ -88,7 +88,7 @@ public class Blogger {
     }
 
     public void setIntroduction(String introduction) {
-        this.introduction = introduction == null ? null : introduction.trim();
+        this.introduction = introduction;
     }
 
     public String getHeadImg() {
@@ -96,7 +96,7 @@ public class Blogger {
     }
 
     public void setHeadImg(String headImg) {
-        this.headImg = headImg == null ? null : headImg.trim();
+        this.headImg = headImg;
     }
 
     public String getIp() {
@@ -104,7 +104,7 @@ public class Blogger {
     }
 
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip;
     }
 
     public Integer getIdentifyLabel() {
@@ -128,6 +128,6 @@ public class Blogger {
     }
 
     public void setBasicInfo(String basicInfo) {
-        this.basicInfo = basicInfo == null ? null : basicInfo.trim();
+        this.basicInfo = basicInfo;
     }
 }

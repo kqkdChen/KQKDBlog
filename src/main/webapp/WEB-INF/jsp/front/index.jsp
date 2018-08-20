@@ -1,73 +1,28 @@
 <%--
   Created by IntelliJ IDEA.
-  User: ¿ÉÈ¦¿ÉØ¼
-  Date: 2018/7/27
-  Time: 17:33
+  User: å¯åœˆå¯ä¸¶
+  Date: 2018/8/17
+  Time: 22:21
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="GBK"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html>
 <head>
-    <meta charset="gbk">
-    <title>¿ÉÈ¦¿Éµã·ÖÏíÕ¾</title>
-    <meta name="keywords" content="¸öÈË²©¿Í,¿ÉÈ¦¿Éµã¸öÈË²©¿Í,Èí¼þ,¿ÉÈ¦¿Éµã" />
-    <meta name="description" content="¿ÉÈ¦¿Éµã¸öÈË²©¿Í£¬JavaºóÌ¨³ÌÐòÔ±ÍøÕ¾£¬Ô­´´ÍÂ²ÛÒÑ¾­¶¨Ê±·ÖÏíÒ»Ð©¾«Æ·Èí¼þ¡£" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${pageContext.request.contextPath}/static/css/base.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/static/css/m.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/static/layui/css/layui.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/static/js/scrollreveal.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/animateInit.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/scrollReveal.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/static/js/jquery.easyfader.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/common.js"></script>
-    <style>
-        .toppic { perspective: 800px; }
-    </style>
+    <jsp:include page="common/head.jsp"/>
+    <link href="${path}/static/layui/css/layui.css" rel="stylesheet">
+    <script src="${path}/static/js/hide.js"></script>
 </head>
 <body>
-<header class="header-navigation" id="header">
-    <nav>
-        <div class="logo"><a href="${pageContext.request.contextPath}/index">¿ÉÈ¦¿Éµã¸öÈË²©¿Í</a></div>
-        <h2 id="mnavh"><span class="navicon"></span></h2>
-        <ul id="starlist">
-            <li><a href="${pageContext.request.contextPath}/index"><i class="layui-icon layui-icon-home"></i>&nbsp;Ê×Ò³</a></li>
-            <li><a href="${pageContext.request.contextPath}/articles/1">Çá²©¿Í</a></li>
-            <li><a href="${pageContext.request.contextPath}/articles/2">ÂýÉú»î</a></li>
-            <li><a href="time.html">¾«Æ·Èí¼þ</a></li>
-            <li class="menu"><a href="about.html">¹ØÓÚÎÒÃÇ</a>
-                <ul class="sub">
-                    <li><a href="#">¹ØÓÚ²©Ö÷</a></li>
-                    <li><a href="#">¹ØÓÚ±¾Õ¾</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="searchbox">
-            <div id="search_bar" class="search_bar">
-                <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
-                    <input class="input" placeholder="ÏëËÑµãÊ²Ã´ÄØ.." type="text" name="keyboard" id="keyboard">
-                    <input type="hidden" name="show" value="title" />
-                    <input type="hidden" name="tempid" value="1" />
-                    <input type="hidden" name="tbname" value="news">
-                    <input type="hidden" name="Submit" value="ËÑË÷" />
-                    <p class="search_ico"> <span></span></p>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
+<jsp:include page="common/nav.jsp"/>
 <article>
-    <!--banner begin-->
-    <div class="picsbox">
+    <main>
         <div class="banner">
             <div id="banner" class="fader">
-                <c:forEach var="blog" items="${topList}">
-                    <li class="slide" ><a href="${pageContext.request.contextPath}/article/${blog.id}" target="_blank">
+                <c:forEach var="blog" end="3" items="${topList}">
+                    <li class="slide" ><a href="${pageContext.request.contextPath}/blog/${blog.id}" target="_blank">
                         <img src="${pageContext.request.contextPath}/${blog.cover}">
                         <span class="imginfo">${blog.title}</span>
                     </a></li>
@@ -80,28 +35,41 @@
                 </div>
             </div>
         </div>
-        <!--banner end-->
-        <div class="toppic">
-            <li class="top"> <a href="/" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/images/toppic01.jpg"></i>
-                <h2>±ðÈÃÕâÐ©ÄÖÐÄµÄÌ×Â·£¬»ÙÁËÄãµÄÍøÒ³Éè¼Æ!</h2>
-                <span>Ñ§ÎÞÖ¹¾³</span> </a> </li>
-            <li class="top"> <a href="/" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/images/zd01.jpg"></i>
-                <h2>¸öÈË²©¿Í£¬ÊôÓÚÎÒµÄÐ¡ÊÀ½ç£¡</h2>
-                <span>Ñ§ÎÞÖ¹¾³</span> </a> </li>
+        <div class="blank"></div>
+        <div class="blogsbox">
         </div>
-    </div>
-    <div class="blank"></div>
-    <!--blogsbox begin-->
-    <div class="blogsbox" id="blogList">
-        <input type="hidden" id="URL" value="${pageContext.request.contextPath}"/>
-    </div>
+    </main>
     <!--blogsbox end-->
-    <jsp:include page="common/aside.jsp"/>
+    <aside class="sidebar">
+        <div class="toppic">
+            <li><a href="${path}" title="å®‰é™åœ°åšä¸€ä¸ªçˆ±è®¾è®¡çš„å¥³å­" target="_blank"><i><img src="${path}"></i>
+                <h2>å®‰é™åœ°åšä¸€ä¸ªçˆ±è®¾è®¡çš„å¥³å­</h2>
+                <span>æ…¢ç”Ÿæ´»</span> </a> </li>
+            <li><a href="${path}" title="ä¸ªäººåšå®¢ï¼Œå±žäºŽæˆ‘çš„å°ä¸–ç•Œï¼" target="_blank"><i><img src="${path}"></i>
+                <h2>ä¸ªäººåšå®¢ï¼Œå±žäºŽæˆ‘çš„å°ä¸–ç•Œï¼</h2>
+                <span>æ…¢ç”Ÿæ´»</span> </a> </li>
+        </div>
+        <div class="zhuanti">
+            <h2 class="hometitle">ç‰¹åˆ«æŽ¨è</h2>
+            <c:forEach var="blog" begin="4" items="${topList}">
+            <ul>
+                <li> <i><img src="${path}/${blog.cover}"></i>
+                    <p>${blog.title}<span><a href="${path}/blog/${blog.id}" title="${blog.title}" target="_blank">${blog.blogType.name}</a></span> </p>
+                </li>
+            </ul>
+            </c:forEach>
+        </div>
+        <jsp:include page="common/aside_hot.jsp"/>
+        <jsp:include page="common/aside_blogType.jsp"/>
+        <jsp:include page="common/aside_tag.jsp"/>
+        <jsp:include page="common/aside_link.jsp"/>
+        <jsp:include page="common/aside_followMe.jsp"/>
+    </aside>
 </article>
+<input type="hidden" value="${path}" id="URL"/>
 <jsp:include page="common/footer.jsp"/>
-<script src="${pageContext.request.contextPath}/static/layui/layui.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/index.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/myAnimate.js"></script>
+<script src="${path}/static/layui/layui.js"></script>
+<script src="${path}/static/js/index.js"></script>
 </body>
 </html>
 

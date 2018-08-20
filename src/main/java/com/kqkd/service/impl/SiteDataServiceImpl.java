@@ -50,6 +50,11 @@ public class SiteDataServiceImpl implements SiteDataService {
     }
 
     @Override
+    public SiteData findDvp() {
+        return siteDataMapper.findDvp();
+    }
+
+    @Override
     public int updateByPrimaryKey(SiteData record) {
         return siteDataMapper.updateByPrimaryKey(record);
     }

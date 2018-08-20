@@ -1,7 +1,11 @@
 package com.kqkd.util;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.kqkd.pojo.Blog;
+import org.apache.commons.lang.time.DateUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 字符串工具类
@@ -10,29 +14,17 @@ import java.util.List;
  */
 public class StringUtil {
 
-	/**
-	 * 判断是否是空
-	 * @param str
-	 * @return
-	 */
+
 	public static boolean isEmpty(String str){
 		return str == null || "".equals(str.trim());
 	}
 	
-	/**
-	 * 判断是否不是空
-	 * @param str
-	 * @return
-	 */
+
 	public static boolean isNotEmpty(String str){
 		return !isEmpty(str);
 	}
 	
-	/**
-	 * 格式化模糊查询
-	 * @param str
-	 * @return
-	 */
+
 	public static String formatLike(String str){
 		if(isNotEmpty(str)){
 			return "%"+str+"%";
@@ -41,36 +33,15 @@ public class StringUtil {
 		}
 	}
 	
-	/**
-	 * 过滤掉集合里的空格
-	 * @param list
-	 * @return
-	 */
+
 	public static List<String> filterWhite(List<String> list){
-		List<String> resultList=new ArrayList<>();
-		for(String l:list){
-			if(isNotEmpty(l)){
-				resultList.add(l);
+		List<String> resultList = new ArrayList<>();
+		for(String str : list){
+			if(isNotEmpty(str)){
+				resultList.add(str);
 			}
 		}
 		return resultList;
 	}
-	
-	/**
-	 * 数组判非空
-	 * @param o
-	 * @return
-	 */
-	public static boolean arrayIsNotEmpty(Object []o){
-		return o != null || (o.length != 0 && o != null);
-	}
 
-	/**
-	 * 数组判空
-	 * @param o
-	 * @return
-	 */
-	public static boolean arrayIsEmpty(Object []o){
-		return !arrayIsNotEmpty(o);
-	}
 }

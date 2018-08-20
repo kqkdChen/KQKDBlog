@@ -5,7 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="visit_info" jdbcType="VARCHAR" property="visitInfo" />
+    <result column="visit_time" jdbcType="TIMESTAMP" property="visitTime" />
+    <result column="visit_page" jdbcType="VARCHAR" property="visitPage" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -37,7 +38,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ip, address, visit_info
+    id, ip, address, visit_time, visit_page
   </sql>
   <select id="selectByExample" parameterType="com.kqkd.pojo.example.VisitExample" resultMap="BaseResultMap">
     select
@@ -65,10 +66,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Visit" useGeneratedKeys="true">
-    insert into t_visit (ip, address, visit_info
-      )
-    values (#{ip,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{visitInfo,jdbcType=VARCHAR}
-      )
+    insert into t_visit (ip, address, visit_time, 
+      visit_page)
+    values (#{ip,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{visitTime,jdbcType=TIMESTAMP}, 
+      #{visitPage,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.kqkd.pojo.Visit" useGeneratedKeys="true">
     insert into t_visit
@@ -79,8 +80,11 @@
       <if test="address != null">
         address,
       </if>
-      <if test="visitInfo != null">
-        visit_info,
+      <if test="visitTime != null">
+        visit_time,
+      </if>
+      <if test="visitPage != null">
+        visit_page,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -90,8 +94,11 @@
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="visitInfo != null">
-        #{visitInfo,jdbcType=VARCHAR},
+      <if test="visitTime != null">
+        #{visitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitPage != null">
+        #{visitPage,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -104,8 +111,11 @@
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="visitInfo != null">
-        visit_info = #{visitInfo,jdbcType=VARCHAR},
+      <if test="visitTime != null">
+        visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="visitPage != null">
+        visit_page = #{visitPage,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -114,7 +124,8 @@
     update t_visit
     set ip = #{ip,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      visit_info = #{visitInfo,jdbcType=VARCHAR}
+      visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      visit_page = #{visitPage,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

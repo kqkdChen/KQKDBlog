@@ -38,6 +38,9 @@
   <sql id="Base_Column_List">
     id, date, dpv
   </sql>
+  <select id="findDvp" resultType="SiteData">
+    SELECT SUM(dpv) AS dpv FROM t_sitedata
+  </select>
   <select id="selectByExample" parameterType="com.kqkd.pojo.example.SiteDataExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

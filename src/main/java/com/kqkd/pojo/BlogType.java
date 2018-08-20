@@ -9,14 +9,6 @@ public class BlogType {
 
     private String total;
 
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -30,7 +22,7 @@ public class BlogType {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getSort() {
@@ -39,5 +31,13 @@ public class BlogType {
 
     public void setSort(Integer sort) {
         this.sort = sort;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 }

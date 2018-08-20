@@ -1,9 +1,6 @@
 package com.kqkd.pojo;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Blog {
     private Integer id;
@@ -43,39 +40,6 @@ public class Blog {
 
     private Integer hotNum; //热力值
 
-
-    public Integer getHotNum() {
-        return hotNum;
-    }
-
-    public void setHotNum(Integer hotNum) {
-        this.hotNum = hotNum;
-    }
-
-    public String getReleaseDateStr() {
-        return releaseDateStr;
-    }
-
-    public void setReleaseDateStr(String releaseDateStr) {
-        this.releaseDateStr = releaseDateStr;
-    }
-
-    public Blogger getBlogger() {
-        return blogger;
-    }
-
-    public void setBlogger(Blogger blogger) {
-        this.blogger = blogger;
-    }
-
-    public BlogType getBlogType() {
-        return blogType;
-    }
-
-    public void setBlogType(BlogType blogType) {
-        this.blogType = blogType;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -113,7 +77,7 @@ public class Blog {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getSummary() {
@@ -121,7 +85,7 @@ public class Blog {
     }
 
     public void setSummary(String summary) {
-        this.summary = summary == null ? null : summary.trim();
+        this.summary = summary;
     }
 
     public String getCover() {
@@ -129,7 +93,7 @@ public class Blog {
     }
 
     public void setCover(String cover) {
-        this.cover = cover == null ? null : cover.trim();
+        this.cover = cover;
     }
 
     public Integer getCheckNum() {
@@ -161,7 +125,7 @@ public class Blog {
     }
 
     public void setKeywords(String keywords) {
-        this.keywords = keywords == null ? null : keywords.trim();
+        this.keywords = keywords;
     }
 
     public Integer getTop() {
@@ -185,6 +149,38 @@ public class Blog {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
+    }
+
+    public BlogType getBlogType() {
+        return blogType;
+    }
+
+    public void setBlogType(BlogType blogType) {
+        this.blogType = blogType;
+    }
+
+    public Blogger getBlogger() {
+        return blogger;
+    }
+
+    public void setBlogger(Blogger blogger) {
+        this.blogger = blogger;
+    }
+
+    public String getReleaseDateStr() {
+        return releaseDateStr;
+    }
+
+    public void setReleaseDateStr(String releaseDateStr) {
+        this.releaseDateStr = releaseDateStr;
+    }
+
+    public Integer getHotNum() {
+        return hotNum;
+    }
+
+    public void setHotNum(Integer hotNum) {
+        this.hotNum = hotNum;
     }
 }

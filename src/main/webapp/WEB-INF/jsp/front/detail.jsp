@@ -1,140 +1,123 @@
 <%--
   Created by IntelliJ IDEA.
-  User: ¿ÉÈ¦¿ÉØ¼
-  Date: 2018/7/30
-  Time: 16:57
+  User: å¯åœˆå¯ä¸¶
+  Date: 2018/8/18
+  Time: 14:11
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="GBK"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!doctype html>
 <html>
 <head>
-    <meta charset="gbk">
-    <title>¿ÉÈ¦¿Éµã·ÖÏíÕ¾</title>
-    <meta name="keywords" content="¸öÈË²©¿Í,¿ÉÈ¦¿Éµã¸öÈË²©¿Í,Èí¼ş,¿ÉÈ¦¿Éµã" />
-    <meta name="description" content="¿ÉÈ¦¿Éµã¸öÈË²©¿Í£¬JavaºóÌ¨³ÌĞòÔ±ÍøÕ¾£¬Ô­´´ÍÂ²ÛÒÑ¾­¶¨Ê±·ÖÏíÒ»Ğ©¾«Æ·Èí¼ş¡£" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${pageContext.request.contextPath}/static/css/base.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/static/css/m.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/static/layui/css/layui.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/static/js/jquery.easyfader.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/common.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/scrollReveal.js"></script>
+    <jsp:include page="common/head.jsp"/>
+    <link href="${path}/static/layui/css/layui.css" rel="stylesheet">
 </head>
 <body>
-<header class="header-navigation" id="header">
-    <nav>
-        <div class="logo"><a href="${pageContext.request.contextPath}/index">¿ÉÈ¦¿Éµã¸öÈË²©¿Í</a></div>
-        <h2 id="mnavh"><span class="navicon"></span></h2>
-        <ul id="starlist">
-            <li><a href="${pageContext.request.contextPath}/index"><i class="layui-icon layui-icon-home"></i>&nbsp;Ê×Ò³</a></li>
-            <li><a href="${pageContext.request.contextPath}/articles/1">Çá²©¿Í</a></li>
-            <li><a href="${pageContext.request.contextPath}/articles/2">ÂıÉú»î</a></li>
-            <li><a href="time.html">¾«Æ·Èí¼ş</a></li>
-            <li class="menu"><a href="about.html">¹ØÓÚÎÒÃÇ</a>
-                <ul class="sub">
-                    <li><a href="#">¹ØÓÚ²©Ö÷</a></li>
-                    <li><a href="#">¹ØÓÚ±¾Õ¾</a></li>
-                </ul>
-            </li>
-        </ul>
-        <div class="searchbox">
-            <div id="search_bar" class="search_bar">
-                <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
-                    <input class="input" placeholder="ÏëËÑµãÊ²Ã´ÄØ.." type="text" name="keyboard" id="keyboard">
-                    <input type="hidden" name="show" value="title" />
-                    <input type="hidden" name="tempid" value="1" />
-                    <input type="hidden" name="tbname" value="news">
-                    <input type="hidden" name="Submit" value="ËÑË÷" />
-                    <p class="search_ico"> <span></span></p>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
+<jsp:include page="common/nav.jsp"/>
 <article>
-    <h1 class="t_nav"><span>ÄúÏÖÔÚµÄÎ»ÖÃÊÇ£ºÊ×Ò³ > <a href="${pageContext.request.contextPath}/articles/1">Çá²©¿Í</a> > ÕıÎÄ</span><a href="${pageContext.request.contextPath}/index" class="n1">Ê×Ò³</a><a href="${pageContext.request.contextPath}/article" class="n2">Çá²©¿Í</a></h1>
-    <div class="infosbox">
-        <div class="newsview">
-            <h3 class="news_title">${blog.title}</h3>
-            <div class="bloginfo">
-                <ul>
-                    <li class="author"><a href="/">${blog.blogger.nickName}</a></li>
-                    <li class="lmname"><a href="${pageContext.request.contextPath}/cate/${blog.typeId}">${blog.blogType.name}</a></li>
-                    <li class="timer"><fmt:formatDate value="${blog.releaseDate}" type="date" pattern="yyyy-MM-dd HH:mm"/></li>
-                    <li class="view">${blog.checkNum}</li>
-                    <li class="like">${blog.likeNum}</li>
-                </ul>
+    <h1 class="t_nav"><span>æ‚¨ç°åœ¨çš„ä½ç½®æ˜¯ï¼š<a href="${path}/index">é¦–é¡µ</a>&nbsp;>&nbsp;<a href="">æ­£æ–‡</a>&nbsp;>&nbsp;<a href="${path}/cate/${blog.typeId}">${blog.blogType.name}</a></span><a href="${path}/index" class="n1">ç½‘ç«™é¦–é¡µ</a><a href="" class="n2">æ­£æ–‡</a></h1>
+    <main class="layui-anim layui-anim-upbit">
+        <div class="infosbox">
+            <div class="newsview">
+                <h3 class="news_title">${blog.title}</h3>
+                <div class="bloginfo">
+                    <ul>
+                        <li class="author">${blog.blogger.nickName}</li>
+                        <li class="lmname"><a href="${path}/cate/${blog.typeId}">${blog.blogType.name}</a></li>
+                        <li class="timer"><fmt:formatDate value="${blog.releaseDate}" type="date" pattern="yyyy-MM-dd HH:ss"/></li>
+                        <li class="view">${blog.checkNum}</li>
+                        <li class="like">${blog.likeNum}</li>
+                    </ul>
+                </div>
+                <div class="tags">
+                    <c:forEach items="${fn:split(blog.keywords, ' ')}" var="keyword">
+                        <c:if test="${!empty keyword}"><a href="${pageContext.request.contextPath}/tag/${keyword}" target="_blank">${keyword}</a> &nbsp;</c:if>
+                    </c:forEach>
+                </div>
+                <div class="news_about"><strong>ç®€ä»‹</strong>${blog.summary}</div>
+                <div class="news_con">${blog.content}</div>
             </div>
-            <div class="tags"><c:forEach items="${fn:split(blog.keywords, ' ')}" var="keyword">
-                <c:if test="${!empty keyword}"><a href="${pageContext.request.contextPath}/tag/${keyword}" target="_blank">${keyword}</a> &nbsp;</c:if>
-            </c:forEach></div>
-            <div class="news_about"><strong>¼ò½é</strong>${blog.summary}</div>
-            <div class="news_con">${blog.content}</div>
-        </div>
-        <div class="share">
-            <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> µãÔŞ£¡ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>13</b>)</p>
-            <p class="dasbox"><a href="javascript:void(0)" onClick="dashangToggle()" class="dashang" title="´òÉÍ£¬Ö§³ÖÒ»ÏÂ">´òÉÍ±¾Õ¾</a></p>
-            <div class="hide_box"></div>
-            <div class="shang_box"> <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="¹Ø±Õ">¹Ø±Õ</a>
-                <div class="shang_tit">
-                    <p>¸ĞĞ»ÄúµÄÖ§³Ö£¬ÎÒ»á¼ÌĞøÅ¬Á¦µÄ!</p>
-                </div>
-                <div class="shang_payimg"> <img src="images/alipayimg.jpg" alt="É¨ÂëÖ§³Ö" title="É¨Ò»É¨"> </div>
-                <div class="pay_explain">É¨Âë´òÉÍ£¬Ò»·ÖÒ²ÊÇ°®</div>
-                <div class="shang_payselect">
-                    <div class="pay_item checked" data-id="alipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="images/alipay.jpg" alt="Ö§¸¶±¦"></span> </div>
-                    <div class="pay_item" data-id="weipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="images/wechat.jpg" alt="Î¢ĞÅ"></span> </div>
-                </div>
-                <script type="text/javascript">
-                    $(function(){
+            <div class="share">
+                <p class="diggit"><a href=""> å¾ˆèµå“¦ï¼</a>(<b id="diggnum">${blog.likeNum}</b>)</p>
+                <p class="dasbox"><a href="javascript:void(0)" onClick="dashangToggle()" class="dashang" title="æ‰“èµï¼Œæ”¯æŒä¸€ä¸‹">æ‰“èµæœ¬ç«™</a></p>
+                <div class="hide_box"></div>
+                <div class="shang_box"> <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="å…³é—­">å…³é—­</a>
+                    <div class="shang_tit">
+                        <p>æ„Ÿè°¢æ‚¨çš„æ”¯æŒï¼Œæˆ‘ä¼šç»§ç»­åŠªåŠ›çš„!</p>
+                    </div>
+                    <div class="shang_payimg"> <img src="../../skin/more/images/alipayimg.jpg" tppabs="http://www.yangqq.com/more/skin/more/images/alipayimg.jpg" alt="æ‰«ç æ”¯æŒ" title="æ‰«ä¸€æ‰«"> </div>
+                    <div class="pay_explain">æ‰«ç æ‰“èµï¼Œä½ è¯´å¤šå°‘å°±å¤šå°‘</div>
+                    <div class="shang_payselect">
+                        <div class="pay_item checked" data-id="alipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="../../skin/more/images/alipay.jpg" tppabs="http://www.yangqq.com/more/skin/more/images/alipay.jpg" alt="æ”¯ä»˜å®"></span> </div>
+                        <div class="pay_item" data-id="weipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="../../skin/more/images/wechat.jpg" tppabs="http://www.yangqq.com/more/skin/more/images/wechat.jpg" alt="å¾®ä¿¡"></span> </div>
+                    </div>
+                    <script type="text/javascript">
+                      $(function(){
                         $(".pay_item").click(function(){
-                            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-                            var dataid=$(this).attr('data-id');
-                            $(".shang_payimg img").attr("src","images/"+dataid+"img.jpg");
-                            $("#shang_pay_txt").text(dataid=="alipay"?"Ö§¸¶±¦":"Î¢ĞÅ");
+                          $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                          var dataid=$(this).attr('data-id');
+                          $(".shang_payimg img").attr("src","/more/skin/more/images/"+dataid+"img.jpg");
+                          $("#shang_pay_txt").text(dataid=="alipay"?"æ”¯ä»˜å®":"å¾®ä¿¡");
                         });
-                    });
-                    function dashangToggle(){
+                      });
+                      function dashangToggle(){
                         $(".hide_box").fadeToggle();
                         $(".shang_box").fadeToggle();
-                    }
-                </script>
+                      }
+                    </script>
+                </div>
+            </div>
+            <div class="nextinfo">
+                <p>ä¸Šä¸€ç¯‡ï¼š<a href="${path}/blog/${previous.id}">${previous.title}</a></p>
+                <p>ä¸‹ä¸€ç¯‡ï¼š<a href="${path}/blog/${next.id}">${next.title}</a></p>
+            </div>
+            <div class="otherlink">
+                <h2>ç›¸å…³æ–‡ç« </h2>
+                <ul>æ— ç›¸å…³ä¿¡æ¯</ul>
+            </div>
+            <div class="news_pl">
+                <h2>æ–‡ç« è¯„è®º</h2>
+                <ul>
+                    <div class="gbko"> <script>
+                      function CheckPl(obj)
+                      {
+                        if(obj.saytext.value=="")
+                        {
+                          alert("æ‚¨æ²¡ä»€ä¹ˆè¯è¦è¯´å—ï¼Ÿ");
+                          obj.saytext.focus();
+                          return false;
+                        }
+                        return true;
+                      }
+                    </script><form action="http://www.yangqq.com/more/e/pl/doaction.php" method="post" name="saypl" id="saypl" onsubmit="return CheckPl(document.saypl)">
+                        <div id="plpost">
+                            <p class="saying"><span><a href="../../e/pl/-classid=3&id=17.htm" tppabs="http://www.yangqq.com/more/e/pl/?classid=3&id=17">å…±æœ‰<script type="text/javascript" src="../../e/public/ViewClick/-classid=3&id=17&down=2" tppabs="http://www.yangqq.com/more/e/public/ViewClick/?classid=3&id=17&down=2"></script>æ¡è¯„è®º</a></span>æ¥è¯´ä¸¤å¥å§...</p>
+                            <p class="yname"><span>ç”¨æˆ·å:</span><input name="username" type="text" class="inputText" id="username" value="" size="16" /></p>
+                            <p class="yzm"><span>éªŒè¯ç :</span><input name="key" type="text" class="inputText" size="16" />
+                                <img src="../../e/ShowKey/-v=pl.jpg" tppabs="http://www.yangqq.com/more/e/ShowKey/?v=pl" align="absmiddle" name="plKeyImg" id="plKeyImg" onclick="plKeyImg.src='/more/e/ShowKey/?v=pl&t='+Math.random()" title="çœ‹ä¸æ¸…æ¥š,ç‚¹å‡»åˆ·æ–°" /> </p>
+                            <input name="nomember"  type="hidden" id="nomember" value="1" checked="checked" />
+                            <textarea name="saytext" rows="6" id="saytext"></textarea><input name="imageField" type="submit" value="æäº¤"/>
+                            <input name="id" type="hidden" id="id" value="17" />
+                            <input name="classid" type="hidden" id="classid" value="3" />
+                            <input name="enews" type="hidden" id="enews" value="AddPl" />
+                            <input name="repid" type="hidden" id="repid" value="0" />
+                            <input type="hidden" name="ecmsfrom" value="/more/study/2/17.html"></td>
+                        </div></form></div>
+                </ul>
             </div>
         </div>
-        <div class="nextinfo">
-            <c:choose>
-                <c:when test="${!empty previous}">
-                    <p>ÉÏÒ»Æª£º<a href="${pageContext.request.contextPath}/article/${previous.id}">${previous.title}</a></p>
-                </c:when>
-                <c:otherwise>
-                    <p>ÉÏÒ»Æª£ºÃ»ÓĞÁËÅ¶</p>
-                </c:otherwise>
-            </c:choose>
-            <c:choose>
-                <c:when test="${!empty next}">
-                    <p>ÏÂÒ»Æª£º<a href="${pageContext.request.contextPath}/article/${next.id}">${next.title}</a></p>
-                </c:when>
-                <c:otherwise>
-                    <p>ÏÂÒ»Æª£ºÃ»ÓĞÁËÅ¶</p>
-                </c:otherwise>
-            </c:choose>
-        </div>
-        <div class="news_pl">
-            <h2>ÎÄÕÂÆÀÂÛ</h2>
-            <ul>
-                <div class="gbko"> </div>
-            </ul>
-        </div>
-    </div>
-    <jsp:include page="common/aside.jsp"/>
+    </main>
+    <aside class="sidebar">
+        <jsp:include page="common/aside_hot.jsp"/>
+        <jsp:include page="common/aside_blogType.jsp"/>
+        <jsp:include page="common/aside_tag.jsp"/>
+        <jsp:include page="common/aside_link.jsp"/>
+        <jsp:include page="common/aside_followMe.jsp"/>
+    </aside>
 </article>
 <jsp:include page="common/footer.jsp"/>
-<script src="${pageContext.request.contextPath}/static/layui/layui.js"></script>
-</body>
 </html>

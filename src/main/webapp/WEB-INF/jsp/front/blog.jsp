@@ -12,8 +12,8 @@
 <html>
 <head>
     <jsp:include page="common/head.jsp"/>
-    <link href="${path}/static/layui/css/layui.css" rel="stylesheet">
     <script src="${path}/static/js/hide.js"></script>
+    <link href="${path}/static/layui/css/layui.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="common/nav.jsp"/>
@@ -37,10 +37,9 @@
 </div>
 <input type="hidden" value="${path}" id="url"/>
 <input type="hidden" value="${count}" id="count"/>
-<input type="hidden" value="${tagName}" id="tagName"/>
 <jsp:include page="common/footer.jsp"/>
 <script src="${path}/static/layui/layui.js"></script>
-<script src="${path}/static/js/tag.js"></script>
+<script src="${path}/static/js/blog.js"></script>
 </body>
 </html>
 

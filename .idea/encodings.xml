@@ -7,14 +7,14 @@
     <file url="file://$PROJECT_DIR$/src/main/Resources/com/kqkd/mappers/VisitMapper.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/SiteDataMapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/dao/VisitMapper.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/listener/IpAndDateListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Blog.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/SiteData.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Visit.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Visit.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/Visit.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/SiteDataExample.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/VisitExample.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/Visit.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/VisitExample.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/pojo/example/VisitExample.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/SiteDataService.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/service/VisitService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/kqkd/util/DateUtil.java" charset="UTF-8" />

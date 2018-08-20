@@ -12,6 +12,8 @@ public interface SiteDataService {
 
     int insertSelective(SiteData record);
 
+    SiteData findDvp();
+
     List<SiteData> selectByExample(SiteDataExample example);
 
     SiteData selectByPrimaryKey(Integer id);

@@ -23,10 +23,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.temporal.TemporalAdjusters;
+import java.text.ParseException;
 import java.util.*;
 
 @Component
@@ -34,73 +31,27 @@ public class InitListener implements HttpSessionListener, ServletContextListener
 
     private static ApplicationContext applicationContext;
 
+    private static Timer timer = null;
 
-    /**
-     * 统计在线人数以及日访问量（DPV）
-     * @param se
-     */
     @Override
     public void sessionCreated(HttpSessionEvent se){
         ServletContext application = se.getSession().getServletContext();
-        SiteDataService siteDataService = (SiteDataService)applicationContext.getBean("siteDataService");
-        SiteDataExample siteDataExample = new SiteDataExample();
-        siteDataExample.setOrderByClause("date DESC");
-        PageHelper.offsetPage(0, 1);
-        List<SiteData> siteDataList = siteDataService.selectByExample(siteDataExample);
-        Date date = new Date();
-        String formatDateStr = DateUtil.formatDate(date, "yyyy-MM-dd");
-        Date currentDate = null;
-        try {
-            currentDate = DateUtil.formatString(formatDateStr, "yyyy-MM-dd");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if(siteDataList.size() == 0){
-            /*初始化dpv*/
-            SiteData siteData = new SiteData(currentDate,1);
-            siteDataService.insert(siteData);
-            application.setAttribute("dpv",1);
-
-        }else{
-            /*如果当前时间大于表中最大时间，则表明是下一天，否则还是当天*/
-            if(currentDate.compareTo(siteDataList.get(0).getDate()) > 0){
-                SiteData siteData = new SiteData(currentDate,1);
-                siteDataService.insert(siteData);
-                application.setAttribute("dpv",1);
-            }else{
-                SiteData siteData = siteDataList.get(0);
-                Integer id = siteData.getId();
-                Integer dpv = siteData.getDpv()+1;
-                siteData.setDpv(dpv);
-                siteData.setId(id);
-                siteDataService.updateByPrimaryKeySelective(siteData);
-                application.setAttribute("dpv",dpv);
-            }
-        }
         /*统计在线人数*/
         Integer online = (Integer) application.getAttribute("online");
-        if(null == online){
+        if( null == online)
             online = 0;
-        }
-        online++;
-        application.setAttribute("online",online);
+        application.setAttribute("online", online+1);
     }
 
-    /**
-     * session过期即用户下线
-     * @param se
-     */
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
         ServletContext application = se.getSession().getServletContext();
         Integer online = (Integer) application.getAttribute("online");
-        if(null == online){
-            online = 0;
-        }else{
-            online--;
+        if(online > 0){
+            application.setAttribute("online", online-1);
         }
-        application.setAttribute("online",online);
     }
+
 
     /**
      * 初始化博客全局内容
@@ -110,24 +61,15 @@ public class InitListener implements HttpSessionListener, ServletContextListener
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext application = sce.getServletContext();
         BlogTypeService blogTypeService = (BlogTypeService) applicationContext.getBean("blogTypeService");
+        BlogService blogService = (BlogService) applicationContext.getBean("blogService");
+        LinkService linkService = (LinkService) applicationContext.getBean("linkService");
         /*侧边博客类别*/
         List<BlogType> blogTypeList = blogTypeService.countList();
         application.setAttribute("blogTypeList", blogTypeList);
-
-        BlogService blogService = (BlogService) applicationContext.getBean("blogService");
         /* 本月最热 */
         BlogExample blogExample = new BlogExample();
         BlogExample.Criteria criteria = blogExample.createCriteria();
-        /* 计算属于本月时间段内的博客 */
-        LocalDate today = LocalDate.now();
-        LocalDate firstDay = LocalDate.of(today.getYear(),today.getMonth(),1);
-        LocalDate lastDay =today.with(TemporalAdjusters.lastDayOfMonth());
-        ZoneId zoneId = ZoneId.systemDefault();
-        ZonedDateTime first = firstDay.atStartOfDay(zoneId);
-        ZonedDateTime last = lastDay.atStartOfDay(zoneId);
-        Date firstDayDate = Date.from(first.toInstant());
-        Date lastDayDate = Date.from(last.toInstant());
-        criteria.andReleaseDateBetween(firstDayDate, lastDayDate);
+        criteria.andReleaseDateBetween(DateUtil.getMothFirstDay(), DateUtil.getMothLastDay());
         PageHelper.offsetPage(0,5);
         List<Blog> blogList = blogService.selectByExample(blogExample);
         List<Blog> hotList = new ArrayList<>();
@@ -161,7 +103,7 @@ public class InitListener implements HttpSessionListener, ServletContextListener
         List<String> keywordsStrList = new LinkedList<>();
         for(Blog b : keywordsList){
             /*剔除空格和重复的关键字*/
-            if(b!=null){
+            if(b != null){
                 String[] keywordsArray = b.getKeywords().split(" ");
                 for(String keyword : keywordsArray){
                     if(!keywordsStrList.contains(keyword)){
@@ -170,19 +112,32 @@ public class InitListener implements HttpSessionListener, ServletContextListener
                 }
             }
         }
-        application.setAttribute("keywordsList",keywordsStrList);
+        application.setAttribute("tagList",keywordsStrList);
         /*友情链接*/
-        LinkService linkService = (LinkService) applicationContext.getBean("linkService");
         LinkExample linkExample = new LinkExample();
         linkExample.setOrderByClause("sort");
         List<Link> linkList = linkService.selectByExample(linkExample);
         application.setAttribute("linkList",linkList);
-
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-
+        /* 今日浏览量 *//*
+        SiteDataService siteDataService = (SiteDataService) applicationContext.getBean("siteDataService");
+        SiteDataExample siteDataExample = new SiteDataExample();
+        try {
+            siteDataExample.createCriteria().andDateEqualTo(DateUtil.getCurrentDate("yyyy-MM-dd"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<SiteData> siteDataList = siteDataService.selectByExample(siteDataExample);
+        if(siteDataList.size() != 0){
+            application.setAttribute("dpv",siteDataList.get(0).getDpv());
+        }
+        *//* 设置定时器，准点保存今日dpv *//*
+        timer = new Timer(true);
+        Calendar todayEnd = Calendar.getInstance();
+        todayEnd.set(Calendar.HOUR_OF_DAY, 23);
+        todayEnd.set(Calendar.MINUTE, 59);
+        todayEnd.set(Calendar.SECOND, 58);
+        Date date = todayEnd.getTime();
+        timer.schedule(new AutoRun(application, applicationContext),date);*/
     }
 
     @Override
@@ -190,4 +145,33 @@ public class InitListener implements HttpSessionListener, ServletContextListener
         InitListener.applicationContext = applicationContext;
     }
 
+
+    /**
+     *销毁定时器同时保存访问次数
+     * @param sce
+     */
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        /*timer.cancel();  //销毁定时器
+        ServletContext application = sce.getServletContext();
+        Integer dpv = (Integer) application.getAttribute("dpv");
+        if(null == dpv)
+            dpv = 0;
+        SiteDataService siteDataService = (SiteDataService) applicationContext.getBean("siteDataService");
+        SiteDataExample siteDataExample = new SiteDataExample();
+        try {
+            siteDataExample.createCriteria().andDateEqualTo(DateUtil.getCurrentDate("yyyy-MM-dd"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<SiteData> siteDataList = siteDataService.selectByExample(siteDataExample);
+        Date date = new Date();
+        if(siteDataList.size() == 0){
+            siteDataService.insert(new SiteData(date, dpv));
+        }else{
+            SiteData siteData = siteDataList.get(0);
+            siteData.setDpv(dpv);
+            siteDataService.updateByPrimaryKey(siteData);
+        }*/
+    }
 }

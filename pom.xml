@@ -61,6 +61,13 @@
       <version>${standard-version}</version>
     </dependency>
 
+    <!-- fastjson支持 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.49</version>
+    </dependency>
+
     <!-- 添加shiro支持 -->
     <dependency>
       <groupId>org.apache.shiro</groupId>
@@ -99,13 +106,6 @@
       </exclusions>
     </dependency>
 
-    <!-- json数据 使springMVC可以返回json值 ,视情况添加-->
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>${json-version}</version>
-    </dependency>
-
     <!-- Jackson可以轻松的将Java对象转换成json对象和xml文档,同样也可以将json、xml转换成Java对象-->
     <dependency>
       <groupId>net.sf.ezmorph</groupId>
@@ -133,17 +133,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-
 
     <!-- 分页插件 -->
     <dependency>

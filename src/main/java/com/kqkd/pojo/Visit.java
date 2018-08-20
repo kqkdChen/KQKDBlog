@@ -1,5 +1,7 @@
 package com.kqkd.pojo;
 
+import java.util.Date;
+
 public class Visit {
     private Integer id;
 
@@ -7,7 +9,9 @@ public class Visit {
 
     private String address;
 
-    private String visitInfo;
+    private Date visitTime;
+
+    private String visitPage;
 
     public Integer getId() {
         return id;
@@ -33,11 +37,19 @@ public class Visit {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getVisitInfo() {
-        return visitInfo;
+    public Date getVisitTime() {
+        return visitTime;
     }
 
-    public void setVisitInfo(String visitInfo) {
-        this.visitInfo = visitInfo == null ? null : visitInfo.trim();
+    public void setVisitTime(Date visitTime) {
+        this.visitTime = visitTime;
+    }
+
+    public String getVisitPage() {
+        return visitPage;
+    }
+
+    public void setVisitPage(String visitPage) {
+        this.visitPage = visitPage == null ? null : visitPage.trim();
     }
 }
